@@ -1,0 +1,674 @@
+#homeHeaderBar, #homeFooterBar{
+	background-color: dodgerblue;
+}
+#homeHeaderBar > div {
+	font-size: 20px;
+	font-weight: bolder;
+	letter-spacing: 12px;
+	text-align: center;
+	height: 48px;
+	line-height: 43px;
+}
+
+#homeHeaderBar > div > span:nth-child(1){color: black;}
+#homeHeaderBar > div > span:nth-child(2){color: red;}
+#homeHeaderBar > div > span:nth-child(3){color: yellow;}
+#homeHeaderBar > div > span:nth-child(4){color: lime;}
+#homeHeaderBar > div > span:nth-child(5){color: white;}
+#homeHeaderBar > div > span:nth-child(6){color: red;}
+#homeHeaderBar > div > span:nth-child(7){color: purple;}
+#homeHeaderBar > div > span:nth-child(8){color: lime;}
+#homeHeaderBar > div > span:nth-child(9){color: red;}
+
+#homeHeaderBarLeftBtn {
+	background-color: dodgerblue;
+	font-size: 20px;
+}
+#game1BtnHome, #game2BtnHome, #game3BtnHome {border-radius: 10px; margin-bottom: 15px;}
+
+#mainHome {background-color: #7ee5fa;}
+#mainHome > div{text-align: center;}
+#mainHome > div > span{
+	background-color: snow;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	border:2px solid white; border-radius:20px;
+	box-shadow: 10px 10px 10px grey;
+}
+#mainHome > div > span:nth-child(1){color: white; background-color: orange}
+#mainHome > div > span:nth-child(2){color: white; background-color: blue}
+#mainHome > div > span:nth-child(3){color: white; background-color: pink}
+#mainHome > div > span:nth-child(4){color: white; background-color: purple}
+#mainHome > div > span:nth-child(5){color: white; background-color: red}
+#mainHome > div > span:nth-child(6){color: white; background-color: lime}
+#mainHome > div > span:nth-child(7){color: white; background-color: gold}
+#mainHome > div > span:nth-child(8){color: white; background-color: coral}
+#mainHome > div > span:nth-child(9){color: white; background-color: aqua}
+
+#colorScroll {
+ height: 10%;
+ margin: 0;
+ font-size: 16px;
+ text-align: center;
+ word-wrap: normal;
+
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: scroll-left-home 15s linear infinite;
+ -webkit-animation: scroll-left-home 15s linear infinite;
+ animation: scroll-left-home 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left-home {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes scroll-left-home {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes scroll-left-home {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Browser bug fix */
+ -webkit-transform: translateX(-100%); /* Browser bug fix */
+ transform: translateX(-100%); 
+ }
+}
+
+/* Page 2*/
+#pg2HeaderBar, #pg2FooterBar{
+	background-color: dodgerblue;
+}
+#pg2HeaderBar > div {
+	font-size: 18px;
+	font-weight: bolder;
+	text-align: center;
+	letter-spacing: 4px;
+	height: 48px;
+	line-height: 43px;
+}
+#mainPg2 {background:linear-gradient(rgba(186,119,69,0.9), rgba(186,119,69,0.6), rgba(186,119,69,0.4), rgba(186,119,69,0.2));}
+#pg2HeaderBarLeftBtn {background-color: dodgerblue;	font-size: 20px;}
+#gameSelectPg3{padding-left: 10px; font-weight: bolder; font-size: 18px; color: blue;}
+
+#gameOneScore{color: black; border: 2px solid grey; border-radius: 5px; 
+    font-weight: bolder; font-size: 18px; padding: 0; padding-left: 0;}
+#gameOneScoreSp{font-size: 20px; padding-left: 5px;}
+#gameOneScoreSp21{color: red; font-family: arial;}
+
+
+#pg2HeaderBar > div > span:nth-child(1){color: black;}
+#pg2HeaderBar > div > span:nth-child(2){color: red;}
+#pg2HeaderBar > div > span:nth-child(3){color: yellow;}
+#pg2HeaderBar > div > span:nth-child(4){color: lime;}
+#pg2HeaderBar > div > span:nth-child(5){color: white;}
+#pg2HeaderBar > div > span:nth-child(6){color: red;}
+#pg2HeaderBar > div > span:nth-child(7){color: purple;}
+#pg2HeaderBar > div > span:nth-child(8){color: lime;}
+#pg2HeaderBar > div > span:nth-child(9){color: red;}
+#pg2HeaderBar > div > span:nth-child(10){color: white;}
+#pg2HeaderBar > div > span:nth-child(11){color: coral;}
+#pg2HeaderBar > div > span:nth-child(12){color: orange;}
+#pg2HeaderBar > div > span:nth-child(13){color: aqua;}
+#pg2HeaderBar > div > span:nth-child(14){color: purple;}
+
+#nameTheColor, #nameTheColorPg3{font-weight: bolder; font-size: 20px; background-color:snow;
+			text-align: center;
+/* Starting position */
+ transform:translateX(70%);
+ animation: scroll-left 10s linear infinite;
+}
+
+@keyframes scroll-left {
+ 0%  { 
+ transform: translateX(50%); 		
+ }
+ 50% { 
+ transform: translateX(-50%); 
+ }
+}
+#colorCheck :hover{background:linear-gradient(red)}
+.gameOneBtnsCont1{display: flex; align-items: center;}
+#gameCheckColorBtn{border: 2px solid lime; text-shadow: none;}
+
+#redContPg3, #greenContPg3, #blueContPg3 {width: 100%;}
+#colorDiv{font-weight: bolder; text-shadow: none; font-size: 14px; text-align: right; 
+	padding-right: 5px;}
+#colorDiv > p {background-color: inherit;}
+
+#selectCat > div {padding: 15px; border-radius: 15px; font-weight: bolder; padding-top: 10px; padding-bottom: 10px;
+    font-size: 18px; transition-duration:1s; border: 3px inset snow; text-align: center;}
+#selectCat > div:hover {background:linear-gradient(#C6F8FF,#71C2FF,#2681E6,#00BDFF,#6ED0FF);}
+#selectCat > div:nth-child(1){background:linear-gradient(white,lime,white); margin-bottom: 10px;}
+#selectCat > div:nth-child(2){background:linear-gradient(white,red,white);}
+#gameOneEasy, #gameOneHard {padding: 15px; border-radius: 15px; font-weight: bolder; padding-top: 10px; padding-bottom: 10px;
+    font-size: 18px; transition-duration:1s; border: 3px inset snow;  
+    color: white; font-size: 14px; width: 60%;}
+#gameOneEasy{background:linear-gradient(white,lime,white);}
+#gameOneHard{background:linear-gradient(white,red,white);}
+
+#gameLine{width: 100%; background-color: red; height:1px}
+#gameOneScore{display: flex; float:right; width:30%;
+    background-color: white;}
+/* Home Page- Binod*/
+.binod {
+    position:fixed;
+    height:60px;
+    width:60px;
+    border-radius: 30px;
+    font-size:20px;
+}
+#ele1{
+	background-color: dodgerblue; /*red*/
+    left:10vw;
+    animation:anim 4.9s linear infinite;
+    transform:scale(1.4);
+}
+#ele2{
+	background-color: dodgerblue; /*yellow*/
+    left:15vw;
+    color: coral;
+    animation:anim 5s linear infinite;
+    transform:scale(1.3);
+}
+#ele3{
+	background-color: dodgerblue; /*purple*/
+    left:36vw;
+    animation:anim 4.5s linear infinite;
+    transform:scale(2);
+}
+#ele4{
+	background-color: dodgerblue; /*lime*/
+    left:70vw;
+    animation:anim 7s linear infinite;
+    transform:scale(0.65);
+}
+#ele5{
+	background-color: dodgerblue;  /*coral*/
+    left:76vw;
+    color: coral;
+    text-shadow: 20px 20px 2px steelblue; 
+    animation:anim 12s linear infinite;
+    transform:scale(4);
+}
+#ele6{
+	background-color: dodgerblue; /*aqua*/
+    left:52vw;
+    animation:anim 5s linear infinite;
+    transform:scale(1.3);
+}
+#ele7{
+	background-color: dodgerblue; /*gold*/
+    left:90vw;
+    animation:anim 4.8s linear infinite;
+    transform:scale(1.4);
+}
+#ele8{
+	background-color: dodgerblue; /*dodgerblue*/
+    left:6vw;
+    animation:anim 6.1s linear infinite;
+}
+@keyframes anim{
+    0%{
+        top:-20px;
+    }
+    100%{
+        top:100vh;
+    }
+}
+/* Home Page- /Binod*/
+/*  Page2- Rotate Color ------*/
+#colorRotate{text-align: center; display: flex; justify-content: center;
+            transform: scale(1.2, 1.2);}
+#colorRotate > div{
+    background-color: snow;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    line-height: 15px;
+    text-align: center;
+    border:2px solid white; border-radius:15px;
+    box-shadow: 10px 10px 10px grey;
+}
+#colorRotate > div:nth-child(1){color: white; background-color: orange}
+#colorRotate > div:nth-child(2){color: white; background-color: blue}
+#colorRotate > div:nth-child(3){color: white; background-color: pink}
+#colorRotate > div:nth-child(4){color: white; background-color: purple}
+#colorRotate > div:nth-child(5){color: white; background-color: red}
+#colorRotate > div:nth-child(6){color: white; background-color: lime}
+#colorRotate > div:nth-child(7){color: white; background-color: gold}
+#colorRotate > div:nth-child(8){color: white; background-color: coral}
+#colorRotate > div:nth-child(9){color: white; background-color: aqua}
+#colorRotate > div:nth-child(10){color: white; background-color: purple}
+#colorRotate > div:nth-child(11){color: white; background-color: lime}
+#colorRotate > div:nth-child(12){color: white; background-color: red}
+
+#colorRotate1, #colorRotate2, #colorRotate3, #colorRotate4, 
+#colorRotate5, #colorRotate6, #colorRotate7, #colorRotate8, 
+#colorRotate9, #colorRotate10, #colorRotate11, #colorRotate12{
+ text-align: center;
+ word-wrap: normal;
+
+ /* Starting position */
+ -moz-transform:rotate(360deg);;
+ -webkit-transform:rotate(360deg);; 
+ transform:rotate(360deg);;
+ /* Apply animation to this element */  
+ -moz-animation: scroll-left 10s linear infinite;
+ -webkit-animation: scroll-left 10s linear infinite;
+ animation: rotate-left 10s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes rotate-left {
+ 0%   { -moz-transform: rotate(360deg); }
+ 100% { -moz-transform: rotate(-360deg); }
+}
+@-webkit-keyframes rotate-left {
+ 0%   { -webkit-transform: rotate(360deg); }
+ 100% { -webkit-transform: rotate(-360deg); }
+}
+@keyframes rotate-left {
+ 0%   { 
+ -moz-transform: rotate(360deg); /* Browser bug fix */
+ -webkit-transform: rotate(360deg); /* Browser bug fix */
+ transform: rotate(360deg);         
+ }
+ 100% { 
+ -moz-transform: rotate(-360deg); /* Browser bug fix */
+ -webkit-transform: rotate(-360deg); /* Browser bug fix */
+ transform: rotate(-360deg); 
+ }
+}
+
+#famWithColors{
+font-weight: bolder;
+ margin-top: 0;
+ font-size: 18px;
+ text-align: center;
+ word-wrap: normal;
+
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);    
+ transform:translateX(100%);
+ /* Apply animation to this element */  
+ -moz-animation: scroll-left-gameOne 15s linear infinite;
+ -webkit-animation: scroll-left-gameOn 15s linear infinite;
+ animation: scroll-left-gameOn 15s linear infinite;
+}
+
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left-gameOn {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes scroll-left-gameOn {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes scroll-left-gameOn {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%);       
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Browser bug fix */
+ -webkit-transform: translateX(-100%); /* Browser bug fix */
+ transform: translateX(-100%); }
+}
+/* Page2- /Rotate Color*/
+
+#colorRotate_burstBaloon{text-align: center; display: flex; justify-content: center;
+            transform: scale(1.2, 1.2);}
+#colorRotate_burstBaloon > div{
+    background-color: snow;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    line-height: 15px;
+    text-align: center;
+    border:2px solid white; border-radius:15px;
+    box-shadow: 10px 10px 10px grey;
+}
+#colorRotate_burstBaloon > div:nth-child(1){color: white; background-color: orange}
+#colorRotate_burstBaloon > div:nth-child(2){color: white; background-color: blue}
+#colorRotate_burstBaloon > div:nth-child(3){color: white; background-color: pink}
+#colorRotate_burstBaloon > div:nth-child(4){color: white; background-color: purple}
+#colorRotate_burstBaloon > div:nth-child(5){color: white; background-color: red}
+#colorRotate_burstBaloon > div:nth-child(6){color: white; background-color: lime}
+#colorRotate_burstBaloon > div:nth-child(7){color: white; background-color: gold}
+#colorRotate_burstBaloon > div:nth-child(8){color: white; background-color: coral}
+#colorRotate_burstBaloon > div:nth-child(9){color: white; background-color: aqua}
+#colorRotate_burstBaloon > div:nth-child(10){color: white; background-color: purple}
+#colorRotate_burstBaloon > div:nth-child(11){color: white; background-color: lime}
+#colorRotate_burstBaloon > div:nth-child(12){color: white; background-color: red}
+#colorRotate_burstBaloon > div:nth-child(13){color: white; background-color: magenta}
+#colorRotate_burstBaloon > div:nth-child(14){color: white; background-color: dodgerblue}
+#colorRotate_burstBaloon > div:nth-child(15){color: white; background-color: violet}
+
+#colorRotate1, #colorRotate2, #colorRotate3, #colorRotate4, 
+#colorRotate5, #colorRotate6, #colorRotate7, #colorRotate8, 
+#colorRotate9, #colorRotate10, #colorRotate11, #colorRotate12, #colorRotate13, #colorRotate14, #colorRotate15{
+ text-align: center;
+ word-wrap: normal;
+
+ /* Starting position */
+ -moz-transform:rotate(360deg);;
+ -webkit-transform:rotate(360deg);; 
+ transform:rotate(360deg);;
+ /* Apply animation to this element */  
+ -moz-animation: scroll-left 10s linear infinite;
+ -webkit-animation: scroll-left 10s linear infinite;
+ animation: rotate-left 10s linear infinite;
+}
+
+@media only screen and (max-width: 600px){
+    #colorRotate {transform: scale(1, 1);}
+    #colorRotate_burstBaloon{transform: scale(1, 1);}
+}
+@media only screen and (max-width: 430px){
+    #mainHome > div > span{
+    width: 20px; font-size: 14px;
+    height: 20px;
+    border-radius:10px;}
+}
+@media only screen and (max-width: 400px){
+    #colorRotate {transform: scale(0.8, 0.8);}
+    #colorRotate_burstBaloon{transform: scale(0.8, 0.8);}
+    #gameTwoScoreBoard{transform: scale(0.8, 0.8);}
+
+    #mainHome > div > span{
+    width: 10px; font-size: 13px;
+    height: 8px;
+    border-radius:10px;}
+}
+/* ----------Page 3 --------------*/
+#mainPg3 {border: 2px solid grey; background-color: coral; margin: 10px;
+}
+
+
+/* ----------Page 4 --------------*/
+#pg4HeaderBarLeftBtn {background-color: dodgerblue; font-size: 20px;}
+#mainPg4 {background:linear-gradient(lightgrey, white);}
+#gameTwoScoreBoard{color: black; border: 2px solid grey; border-radius: 5px; font-weight: bolder; font-size: 18px;
+    display: inline-block; float:right; width:auto; background-color: white; text-align: left; padding: 5px;}
+#gameTwoScoreCont{text-align: left; font-size: 16px; }
+#gameTwoScoreCount{padding-left: 5px; color: red;}
+#gameTwoLifeCount{color: red; font-family: arial; padding-left: 5px;}
+#gameTwoScore{color: red;}
+
+#burstColorCont{margin-top: 0; margin-bottom: 0; 
+    display: flex; justify-content: center; align-items: center;}
+#burstColor{margin-top: 0; width: auto;}
+#bGameOverCont{text-align: center; height: 100px;}
+#balBusrtCountCont{font-size: 20px; text-shadow: none; color: black;}
+#balBusrtCountNo{color: red;}
+#balBusrtCountTime{color: red;}
+
+#bGameBtnCont{position: fixed; bottom: 0; right: 0; width: 100px;}
+#pulseBGameBtn{width: 100%; padding: 5px; background-color: rgba(0,250,0,0.5); text-align: center; font-size: 18px; border-radius: 15px; margin-top: 10px;}
+#exitBGameBtn{width: 100%; padding: 5px; background-color: rgba(250,0,0,0.5); text-align: center; font-size: 18px; border-radius: 15px; margin-top: 10px; margin-bottom: 10px;}
+#bGameBtn{width: 70px; height: 70px; padding: 0px;  background-color: dodgerblue; font-size: 40px; border: 2px solid white; 
+    border-radius: 50px; text-align: center; text-shadow: none; margin-bottom: 10px; color: white;
+    transition: transform 0.5s;}
+
+#startBallGame{background-color: aqua; text-align: center; font-weight: bolder;
+    font-size: 18px;}
+#startBallGameHard{background-color: coral; text-align: center; font-weight: bolder;
+    font-size: 18px;}
+#bGameOver{
+    font-size: 35px; font-weight: bolder; color: red; width: 100%;
+    text-shadow: 3px 3px grey; font-family: cursive;
+    animation: dim 0.5s infinite alternate;
+}
+@keyframes dim{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+/* Home Page- baloonsCont*/
+.baloons {
+    position:fixed;
+    height:60px;
+    width:60px;
+    border-radius: 30px;
+    font-size:20px;
+}
+#aqua{
+    background-color: aqua; /*red*/
+    //left:10vw;
+    animation:anim 6s linear infinite;
+    /*transform:scale(1.4);*/
+    transform:scale(1);
+}
+#gold{
+    background-color: gold; /*yellow*/
+    //left:15vw;
+    color: coral;
+    animation:animBalls 1s linear infinite;
+    /*transform:scale(1.3);*/
+    transform:scale(1);
+}
+#skyblue{
+    background-color: skyblue; /*purple*/
+    //left:36vw;
+    animation:animBalls 4.5s linear infinite;
+    /*transform:scale(3);*/
+    transform:scale(1);
+}
+#magenta{
+    background-color: magenta; /*lime*/
+    //left:70vw;
+    animation:animBalls 2s linear infinite;
+    /*transform:scale(1);*/
+    transform:scale(1);
+}#maroon{
+    background-color: maroon;  /*coral*/
+    //left:76vw;
+    color: coral;
+    animation:animBalls 10s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#crimson{
+    background-color: crimson; /*aqua*/
+    //left:85vw;
+    animation:animBalls 5s linear infinite;
+    /*transform:scale(2.5);*/
+    transform:scale(1);
+}
+#pink{
+    background-color: pink; /*gold*/
+    //left:90vw;
+    animation:animBalls 3.5s linear infinite;
+    /*transform:scale(1.4);*/
+    transform:scale(1);
+}
+#violet{
+    background-color: violet; /*dodgerblue*/
+    //left:45vw;
+    animation:anim 4s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#indigo{
+    background-color: indigo; /*dodgerblue*/
+   // left:20vw;
+    animation:animBalls 5s linear infinite;
+    transform:scale(1);
+}
+#blue{
+    background-color: blue; /*dodgerblue*/
+    //left:6vw;
+    animation:animBalls 2.5s linear infinite;
+    /*transform:scale(3);*/
+    transform:scale(1);
+}
+#white{
+    background-color: white; /*red*/
+    //left:10vw;
+    animation:anim 2.5s linear infinite;
+    /*transform:scale(0.8);*/
+    transform:scale(1);
+}
+#black{
+    background-color: black; /*yellow*/
+    //left:90vw;
+    color: coral;
+    animation:animBalls 6s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#gray{
+    background-color: gray; /*purple*/
+    //left:90vw;
+    animation:animBalls 5s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#chocolate{
+    background-color: chocolate; /*lime*/
+    //left:70vw;
+    animation:animBalls 6s linear infinite;
+    /*transform:scale(1);*/
+    transform:scale(1);
+}
+#teal{
+    background-color: teal;  /*coral*/
+    //left:76vw;
+    color: coral;
+    animation:animBalls 8s linear infinite;
+    /*transform:scale(3);*/
+    transform:scale(1);
+}
+#green{
+    background-color: green; /*aqua*/
+    //left:52vw;
+    animation:animBalls 10s linear infinite;
+    /*transform:scale(5);*/
+    transform:scale(1);
+}
+#red{
+    background-color: red; /*gold*/
+    //left:90vw;
+    animation:animBalls 4s linear infinite;
+    /*transform:scale(2.5);*/
+    transform:scale(1);
+}
+#yellow{
+    background-color: yellow; /*dodgerblue*/
+    //left:40vw;
+    animation:anim 2s linear infinite;
+    /*transform:scale(4);*/
+    transform:scale(1);
+}
+#purple{
+    background-color: purple; /*dodgerblue*/
+    //left:20vw;
+    animation:animBalls 6s linear infinite;
+    transform:scale(1);
+}
+#lime{
+    background-color: lime; /*dodgerblue*/
+    //left:16vw;
+    animation:animBalls 2.5s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#coral{
+    background-color: coral; /*dodgerblue*/
+   // left:16vw;
+    animation:animBalls 3s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#orange{
+    background-color: orange; /*dodgerblue*/
+    //left:45vw;
+    animation:animBalls 5s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#khaki{
+    background-color: khaki; /*dodgerblue*/
+    //left:60vw;
+    animation:animBalls 2s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#navy{
+    background-color: navy; /*dodgerblue*/
+    //left:70vw;
+    animation:animBalls 3.5s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#seagreen{
+    background-color: seagreen; /*dodgerblue*/
+    //left:35vw;
+    animation:animBalls 1.8s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#olive{
+    background-color: olive; /*dodgerblue*/
+    //left:20vw;
+    animation:animBalls 4s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#wheat{
+    background-color: wheat; /*dodgerblue*/
+    //left:55vw;
+    animation:animBalls 2s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#linen{
+    background-color: linen; /*dodgerblue*/
+    //left:80vw;
+    animation:animBalls 2.5s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#turquoise{
+    background-color: turquoise; /*dodgerblue*/
+   // left:45vw;
+    animation:animBalls 1.8s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+#sienna{
+    background-color: sienna; /*dodgerblue*/
+    //left:68vw;
+    animation:animBalls 4s linear infinite;
+    /*transform:scale(2);*/
+    transform:scale(1);
+}
+@keyframes animBalls{
+    0%{
+        top:-20px;
+    }
+    100%{
+        top:100vh;
+    }
+}
+/* Home Page- /baloonsCont*/

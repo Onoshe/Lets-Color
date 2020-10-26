@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    	<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+        <link rel="stylesheet" type="text/css" href="css/letscolor.css">
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/letscolor.js"></script>
+        <script type="text/javascript">
+        	$(document).on('mobileinit', function(){
+        		$.mobile.defaultPageTransition = 'slidefade'; });
+        	$(document).ready(function(){randomColors_Home();
+        		setHeight_HomePage();
+        		setHeight_Page3();
+        		setHeight_Page2();
+        	});
+
+        	//To prevent JQM from enhancing a block of element
+        	/*$(document).bind('mobileinit', function(){
+        		$.mobile.ignoreContentEnabled = true;});*/
+        </script>
+        <script src="js/jquery.mobile-1.4.5.js"></script>
+        <link rel="stylesheet" href="../app/libs/w3School/w3School.css">
+    </head>
+    <body>
+
+<!-- Start of first page -->
+<div data-role="page" id="home">
+
+<!-- panel -->
+<div data-role="panel" data-display="push2" data-theme="b2" id="nav-panel" id="favouriteSongsList">
+	<ul data-role="listview">
+		<li data-icon="home"><a href="#" data-rel="close">Goto Home</a></li>
+		<li><a id="testQuery" href="#page4">GoTo Favourite</a></li>
+		<li><a href="#panel-responsive-page2">Ajax Navigation</a></li>
+		<li><a href="#panel-responsive-page2">Autocomplete</a></li>
+		<li><a href="#panel-responsive-page2">Collapsibles</a></li>
+		<li><a href="#panel-responsive-page2">Controlgroup</a></li>
+		<li><a href="#panel-responsive-page2">New</a></li>
+		<li><a  href="#panel-responsive-page2">Text inputs & textarea</a></li>
+	</ul>
+</div><!-- /panel -->
+
+	<div data-role="header" data-position="fixed" id="homeHeaderBar">
+		<div id="homeHeaderBarDiv"><span>L</span><span>E</span><span>T'</span><span>S</span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span></div>
+		<!--<a href="#" class="ui-btn ui-icon-bars ui-btn-icon-notext" id="homeHeaderBarLeftBtn">bars</a>-->
+	</div><!-- /header -->
+
+<div role="main" class="ui-content" id="mainHome">
+	<div id="colorScroll">
+		<span>L</span>
+		<span>E</span>
+		<span>T'</span>
+		<span>S</span>
+		<span>C</span>
+		<span>O</span>
+		<span>L</span>
+		<span>O</span>
+		<span>R</span>
+	</div>	
+	<br><hr>
+	<input type="text" name="inputColor" id="inputColor" placeholder="&#127752 Enter your favourite color....&#128150 &#128150">
+	<br>
+	<a href="#page2" class="ui-btn" class="homeNav" id="game1BtnHome" onclick="goToGameOne();">Game: Name the Color</a>
+	<a href="#page4" class="ui-btn" class="homeNav" id="game2BtnHome">Game: Burst the Baloon</a>
+	<a href="#page3" class="ui-btn" class="homeNav" id="game3BtnHome">Lets Mix the Color</a>
+
+<div style="display: none;">
+	<div ></div>
+	<div></div>
+</div>
+</div><!-- /content -->
+<div data-role="footer" data-position="fixed" id="homeFooterBar">
+	<h4>COLORS</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of Page2 -->
+<div data-role="page" id="page2">
+	<div data-role="header" data-position="fixed" id="pg2HeaderBar">
+		<div id="pg2HeaderBarDiv"><span>L</span><span>E</span><span>T'</span><span>S</span><span> P</span><span>L</span><span>A</span><span>Y </span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span><span>S</span></div>
+		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-notext" id="pg2HeaderBarLeftBtn">home</a>
+	</div><!-- /header -->
+	<div id="nameTheColorDiv" style="display: none;"><div id="nameTheColor">
+		What Color is this?
+	</div></div>
+<div role="main" class="ui-content" id="mainPg2">
+
+	<div id="famWithColors">Familiarize yourself with colors...</div>
+	<div id="fallingbaloons" style="display: none;">
+		<div class="binod" id="ele1"></div>
+        <div class="binod" id="ele2"></div>
+        <div class="binod" id="ele3"></div>
+        <div class="binod" id="ele4"></div>
+        <div class="binod" id="ele5"></div>
+        <div class="binod" id="ele6"></div>
+        <div class="binod" id="ele7"></div>
+        <div class="binod" id="ele8"></div>
+	</div>
+
+	<button id="gameOneScore" style="display: none;">Score: <span id="gameOneScoreSp">00</span><br><span id="gameOneScoreSp2">Life: </span><span id="gameOneScoreSp21">5</span>
+	</button>	
+<br>
+<div id="nameTheColorGameCont">
+<div id="nameTheColorGameContSub1">
+	<!--<p id="gameSelectPg3">Select Game category</p>-->
+	<div id="gameSelectPg3">
+		<div id="colorRotate">
+			<div id="colorRotate1">N</div>
+			<div id="colorRotate2">A</div>
+			<div id="colorRotate3">M</div>
+			<div id="colorRotate4">E</div>
+			<div id="colorRotate5">T</div>
+			<div id="colorRotate6">H</div>
+			<div id="colorRotate7">E</div>
+			<div id="colorRotate8">C</div>
+			<div id="colorRotate9">O</div>
+			<div id="colorRotate10">L</div>
+			<div id="colorRotate11">O</div>
+			<div id="colorRotate12">R</div>
+		</div>
+		<br><hr>
+	</div>
+	<div id="selectCat">
+		<div onclick="startGameOne(this.innerHTML)">Easy</div>
+		<div onclick="startGameOne(this.innerHTML)">Hard</div>
+	</div>
+	<div id="gameOneEasy" style="display: none;">Name the Color Game: <span id="gameOneEasySp">Easy</span></div>
+	<div id="gameOneHard" style="display: none;">Name the Color Game: <span id="gameOneHardSp">Hard</span></div>
+	<br><hr>
+	<div id="game1ClientSec" style="display: none;">
+		<input type="text" name="inputColor" id="game1Input" placeholder="Enter your answer...">
+		<div class="gameOneBtnsCont1">	
+			<button id="game1AnswerBtn">Submit</button>
+			<button id="gameCheckColorBtn">Life line</button>
+		</div>
+		<div class="gameOneBtnsCont1">
+			<button id="gameOneRestartBtn" onclick="restartMenuGameOne()">Restart Game</button>
+			<button id="gameOneBackToMenuBtn" onclick="back2MenuGameOne()">Back to Menu</button>
+		</div>
+	</div>
+</div>
+		<!--<div id="fallingbaloons" style="display: none;">
+			<div class="binod" id="ele1"></div>
+	        <div class="binod" id="ele2"></div>
+	        <div class="binod" id="ele3"></div>
+	        <div class="binod" id="ele4"></div>
+	        <div class="binod" id="ele5"></div>
+	        <div class="binod" id="ele6"></div>
+	        <div class="binod" id="ele7"></div>
+	        <div class="binod" id="ele8"></div>
+	    </div>-->
+	<div style="display: none;">    
+		<input type="text" name="inputColor" id="inputColorPg2" placeholder="Enter your answer...">
+		<br>
+		<button id="colorCheck">PresMe</button>
+	</div>
+</div>
+</div><!-- /content -->
+	<!-- <div data-role="footer" data-position="fixed" id="pg2FooterBar">
+		<h4></h4>
+	</div>---/footer -->
+</div><!-- /page -->
+
+<!-- Start of Page3 -->
+<div data-role="page" id="page3">
+	<div data-role="header" data-position="fixed" id="pg2HeaderBar">
+		<div id="pg2HeaderBarDiv"><span>M</span><span>I</span><span>X</span><span>S</span><span> P</span><span>L</span><span>A</span><span>Y </span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span><span>S</span></div>
+		<a href="#home" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext" id="pg2HeaderBarLeftBtn">arrow-l</a>
+	</div><!-- /header -->
+	<div id="nameTheColorDiv"><div id="nameTheColorPg3">
+		<span id="nameTheColorPg3S1">What color?</span><span id="nameTheColorPg3S2"></span> 
+	</div></div>
+<div role="main" class="ui-content" id="mainPg3">	
+	<br>
+	<!--
+	<div>R<input type="number" name="r" id="r" value="50" oninput ="changeBgroundP3(this.value)"></div>
+	<div>G<input type="number" name="g" id="g" value="50"></div>
+	<div>B<input type="number" name="b" id="b" value="50"></div>
+	<br>
+	<button id="pg3Btn">PressMe</button>
+	-->
+	<div style="display: none;">
+		<p><span>R: </span><span id="rr">50</span><br>
+			<span>G: </span><span id="gg">50</span><br>
+			<span>B: </span><span id="bb">70</span>
+		</p>
+	</div>
+	<div class="w3-card w3-center" >
+		<div class="w3-card w3-left" style="width: 15%" id="colorDiv">
+			<p>Red:</p>
+			<p>Green:</p>
+			<p>Blue:</p>
+		</div>
+		<div class="w3-card w3-right" style="width: 85%" >
+			<div id="redContPg3"><input type="range" min="0" max="255" value="255" id="redSlider" onchange =" redSliderFun(this.value)" onkeyup=" redSliderFun(this.value)"></div>
+		  	<div id="greenContPg3"><input type="range" min="0" max="255" value="255" id="greenSlider" onchange ="greenSliderFun(this.value)" onkeyup="greenSliderFun(this.value)"></div>
+		  	<div id="blueContPg3"><input type="range" min="0" max="255" value="255" id="blueSlider" onchange ="blueSliderFun(this.value)" onkeyup="blueSliderFun(this.value)"></div>
+	  	</div>
+  	</div>
+  	<br>
+  	<!--<button id="pg3Btn" style="display: block;">PressMe</button>-->
+</div><!-- /content -->
+	 <!-- <div data-enhance='false'>JQM will not enhance on these blocks of code
+ 		<div>Default Slider value: <span id="demo"></span></div>
+		<div id="slidecontainer">
+  			<input type="range" min="1" max="255" value="50" id="dSlider">
+  		</div>
+	</div> -->
+
+<div data-role="footer" data-position="fixed" id="pg2FooterBar" style="display: none;">
+	<h4></h4>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of Page4 -->
+<div data-role="page" id="page4">
+	<div data-role="header" data-position="fixed" id="pg2HeaderBar">
+		<div id="pg2HeaderBarDiv"><span>L</span><span>E</span><span>T'</span><span>S</span><span> P</span><span>L</span><span>A</span><span>Y </span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span><span>S</span></div>
+		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-notext" id="pg4HeaderBarLeftBtn">home</a>
+		<!--<a href="#" class="ui-btn ui-btn-inline ui-btn-icon-right" id="pg4HeaderBarRightBtn">&#9193;</a>-->
+	</div><!-- /header -->
+
+<div role="main" class="ui-content" id="mainPg4">
+	<div id="baloonsCont" style="display: block;">
+		<div class="baloons" id="aqua" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="gold" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="skyblue" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="magenta" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="maroon" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="crimson" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="pink" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="violet" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="indigo" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="blue" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="white" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="black" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="gray" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="chocolate" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="teal" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="green" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="red" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="yellow" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="purple" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="lime" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="coral" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="orange" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="khaki" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="navy" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="seagreen" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="olive" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="wheat" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="linen" onclick="selBall(this.id)" style="display: none;"></div>
+        <div class="baloons" id="turquoise" onclick="selBall(this.id)" style="display: none;"></div>  
+        <div class="baloons" id="sienna" onclick="selBall(this.id)" style="display: none;"></div>      
+	</div>
+
+	<div id="burstColorCont" style="display: none;"><button id="burstColor">Shake/Next: <span id="burstColorSp"></span></button>
+	</div>
+	
+	<div id="startBallGameCont">
+		<button id="startBallGame" style="display: block;">Start Game- Easy</button>
+		<button id="startBallGameHard" style="display: block;">Start Game- Hard</button>
+	</div>
+	<button id="gameTwoScoreBoard" style="display: none;"><div id="gameTwoLife">Count: <span id="gameTwoLifeCount">0</span></div><div id="gameTwoScoreCont"><span>Timer: </span><span id="gameTwoScore">min</span><span id="gameTwoScoreCount">sec</span></div></button><br>
+		<div id="colorRotate_burstBaloonCont">
+		<div id="colorRotate_burstBaloon">
+			<div id="colorRotate1">B</div>
+			<div id="colorRotate2">U</div>
+			<div id="colorRotate3">R</div>
+			<div id="colorRotate4">S</div>
+			<div id="colorRotate5">T</div>
+			<div id="colorRotate6">T</div>
+			<div id="colorRotate7">H</div>
+			<div id="colorRotate8">E</div>
+			<!--<div id="colorRotate9">B</div>
+			<div id="colorRotate10">A</div>
+			<div id="colorRotate11">L</div>
+			<div id="colorRotate12">O</div>
+			<div id="colorRotate13">O</div>
+			<div id="colorRotate14">N</div>-->
+		</div>
+		<div id="colorRotate_burstBaloon">
+			<!--<div id="colorRotate1">B</div>
+			<div id="colorRotate2">U</div>
+			<div id="colorRotate3">R</div>
+			<div id="colorRotate4">S</div>
+			<div id="colorRotate5">T</div>
+			<div id="colorRotate6">T</div>
+			<div id="colorRotate7">H</div>
+			<div id="colorRotate8">E</div>-->
+			<div id="colorRotate9">B</div>
+			<div id="colorRotate10">A</div>
+			<div id="colorRotate11">L</div>
+			<div id="colorRotate12">O</div>
+			<div id="colorRotate13">O</div>
+			<div id="colorRotate14">N</div>
+			<div id="colorRotate15">S</div>
+		</div>
+		</div>
+		<br><br>
+		<div class="w3-display-container" id="bGameOverContPry" style="display: none;">
+			<div id="bGameOverCont">
+				<div id="bGameOver" class="w3-display-bottommiddle">
+					<div id="bGameOverCall" >GAME OVER!!!</div>
+					<div id="balBusrtCountCont"><span id="balBusrtCountNo"></span><span> Baloons bursted in </span><span id="balBusrtCountTime"></span></div>
+				</div>
+			</div>
+		</div>
+	<div style="display: none;">    
+		<input type="text" name="inputColor" id="inputColorPg2" placeholder="Enter your answer...">
+		<br>
+		<button id="colorCheck" onclick="randTest()">PresMe</button>
+	</div>
+</div><!-- /content -->
+	<!--<div id="bGameClientSec" style="display: block;">	
+		<div id="updateBalInterval" style="visibility: hidden;">5000</div>
+	</div>-->
+	<!--<p id="testNoRand" style="color: red; font-size: 16px">Number</p>-->
+	<div id="bGameBtnCont" style="display: none;">
+		<div id="exitCont" style="display: none;">
+			<div id="pulseBGameBtn">Restart</div>
+			<div id="exitBGameBtn">Exit</div>
+		</div>
+		<div id="bGameBtn">+</div>
+	</div>
+	<div data-role="footer" data-position="fixed" id="pg4FooterBar" style="display: none;">
+		
+	</div>
+</div><!-- /page -->
+<style>
+#redSlider {
+  -webkit-appearance: none;
+  background: red;
+  opacity: 0.7;
+  text-shadow: none;
+  color: white;
+}
+#greenSlider {
+  -webkit-appearance: none;
+  background: green;
+  opacity: 1;
+  text-shadow: none;
+  color: white;
+}
+#blueSlider {
+  -webkit-appearance: none;
+  background: blue;
+  opacity: 0.7;
+  text-shadow: none;
+  color: white;
+}
+#colorDiv > p:nth-child(1){color: red}
+#colorDiv > p:nth-child(2){color: green}
+#colorDiv > p:nth-child(3){color: blue}
+
+</style>
+</body>
+</html>
