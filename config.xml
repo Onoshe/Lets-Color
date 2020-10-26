@@ -30,11 +30,11 @@
         <icon src="res/icon/android/xxxhdpi.png" density="xxxhdpi" />
     </platform>
 
-    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/icon/android/screen-ldpi-portrait.png" />
+    <!--<gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/icon/android/screen-ldpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/icon/android/screen-mdpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/icon/android/screen-hdpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/icon/android/screen-xhdpi-portrait.png" />
-    <splash src="splash.png" />
+    <splash src="splash.png" />-->
 
   <allow-intent href="tel:*"/>
   <allow-intent href="sms:*"/>
