@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.immphonegap.example"
+    id          = "com.phonegap.example"
     versionCode = "10"
     version     = "1.0.0" >
 
@@ -36,13 +36,13 @@
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/icon/android/screen-xhdpi-portrait.png" />
     <splash src="splash.png" />-->
 
-  <allow-intent href="tel:*"/>
+  <!--<allow-intent href="tel:*"/>
   <allow-intent href="sms:*"/>
   <a href="mailto:*">
-  <a href="https://*/*"> <!-- This take care of all the https://.... -->
+  <a href="https://*/*"> -->
+    <!-- This take care of all the https://.... -->
   <!--<allow-intent href="*"/>     Allow all unrecognized URLs to open installed apps -->
 
   <preference name="orientation" value="portrait"/>
-  <preference name="SplashScreenDelay" value="5000" />
   <!--<plugin name="cordova-plugin-x-socialsharing" source="npm" />-->
 </widget>
