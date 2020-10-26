@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.phonegap.example"
+    id          = "com.immphonegap.example"
     versionCode = "10"
     version     = "1.0.0" >
 
@@ -13,7 +13,7 @@
       This is a simple game to learn colors
   </description>
 
-  <author href="https://sundayadegboye.imfast.io/" email="adesung2005@yahoo.co.uk">
+  <author href="https://asundayadegboye.imfast.io/" email="sunadesung2005@gmail.co.uk">
       Sunday Adegboye
   </author>
   <!--<icon src="icon.png" />-->
