@@ -43,7 +43,7 @@ $(function(){
 	});
 });
 
-var deviceWidth= screen.width;
+var deviceWidth= screen.width;   //No measurement, ie 'px', etc
 var deviceHeight = screen.height;
 //var homeBarHeight = $("#homeHeaderBarDiv").attr('height');
 $(function(){
@@ -65,7 +65,7 @@ $(function(){
 function setHeight_HomePage(){
 		var pos = $('#mainHome').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight - topPos - topPos - 10)+'px';
+		var elementHeight = (deviceHeight/4*3)+'px';
 		$('#mainHome').css('height', elementHeight);
 }
 /* ------- Testing -------*/
@@ -177,13 +177,13 @@ function blueSliderFun(value){
 function setHeight_Page2(){
 		var pos = $('#mainPg2').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight - topPos - topPos) +'px';
+		var elementHeight = (deviceHeight/4*3) +'px';
 		$('#mainPg2').css('height', elementHeight);
 }
 function setHeight_Page3(){
 		var pos = $('#mainPg3').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight - topPos) +'px';
+		var elementHeight = (deviceHeight/4*3) +'px';
 		$('#mainPg3').css('height', elementHeight);
 }
 
@@ -276,6 +276,15 @@ var bScratchSound = new Audio(bScratchSoundSrc);
 var bGameOverSound = new Audio(bGameOverSoundSrc);
 var bGameWonSound = new Audio(bGameWonSrc);
 
+//Game3 Sounds
+var bBgroundSoundGame3Src = 'res/gameBgrdSoundGame3.mp3';
+var bBgroundSoundGame3 = new Audio(bBgroundSoundGame3Src);
+function playBackgroundSoundGame3(){
+	bBgroundSoundGame3.pause(); //
+	bBgroundSoundGame3 = new Audio(bBgroundSoundGame3Src);
+	bBgroundSoundGame3.play();
+	bBgroundSoundGame3.loop = true;
+}
 
 /* ----- Play Audio -------- */
 var bgroundSound = new Audio(bgroundSoundSrc); //Creating a music object
@@ -398,11 +407,16 @@ function increaseGameOneLife(){
 		$('#gameOneScoreSp21').text(gameOneLife);
 	}
 }
+function removeBallText(){
+	$('.binod').text('');
+}
 
 function submitResult(){ //Check if submitted answer is correct
 	var balcolor = baloonsColor.toUpperCase();
 	var inputedanswer = $('#game1Input').val();
+	inputedanswer = inputedanswer.trim();
 	var inputedanswerTrim = inputedanswer.toUpperCase();
+	inputedanswerTrim = inputedanswerTrim.trim();
 
 	var score = $('#gameOneScoreSp').text();
 	score = parseInt(score);
@@ -411,9 +425,11 @@ function submitResult(){ //Check if submitted answer is correct
 		//alert('Correct!! '+inputedanswer+' is the Color');
 		$('#nameTheColor').css('color', balcolor);
 		$('#nameTheColor').text('Correct!! "'+inputedanswer+'" is the Color');
+		$('.binod').text(inputedanswerTrim);
 		playCorrectSound();
 		setTimeout(playGameOne, 3000);
 		setTimeout(increaseGameOneLife, 3000);
+		setTimeout(removeBallText, 3000);
 	}else{$('#nameTheColor').text('"'+inputedanswer+'"  is not the Color!'); 
 		$('#game1Input').val(''); playWrongSound();}
 }
@@ -433,7 +449,9 @@ $(function(){ 	//HELP - Check the Answer
 			$('#gameOneScoreSp21').text(gameOneLife);
 			//alert(baloonsColor);
 			$('#nameTheColor').css('color', balcolor);
+			$('.binod').text(baloonsColor);
 			$('#nameTheColor').text('The color is- "'+baloonsColor+'"');
+			setTimeout(removeBallText, 3000);
 			setTimeout(playGameOne, 5000);
 		}
 	}
@@ -484,7 +502,6 @@ $(function(){  							//Exit Baloon Game
 	$('#burstColorCont').css('display', 'none');
 	});
 });
-
 var balGameTypeEasy = true;
 $(function(){  					//Baloon Game start- Easy
 	$('#startBallGame').click(function(){
@@ -495,6 +512,9 @@ $(function(){  					//Baloon Game start- Easy
 		$('#bGameBtnCont').css('display', 'block');
 		$('#burstColorCont').css('display', 'flex');
 		$('#burstColorCont').css('display', 'flex');
+
+		$('#gameTwoScoreCount').text('0');
+		$('#gameTwoLifeCount').text('0');
 		balGameTypeEasy = true;
 		startBaloonGame();
 	});
@@ -508,6 +528,9 @@ $(function(){  					//Baloon Game start- Hard
 		$('#bGameBtnCont').css('display', 'block');
 		$('#burstColorCont').css('display', 'flex');
 		$('#burstColorCont').css('display', 'flex');
+
+		$('#gameTwoScoreCount').text('0');
+		$('#gameTwoLifeCount').text('0');
 		balGameTypeEasy = false;
 		startBaloonGame();
 	});
@@ -536,8 +559,10 @@ function resetBaloonGame(){   //Reset the entire game
 	$('#colorRotate_burstBaloonCont').css('display', 'none');
 	stopGameTimer();
 	noOfBalsToRelease = 1;
+
 }
-function checkBaloonGameStatus(){   //Check Game Status
+
+function ballsExhaustedStatus(){   //Check Game Status
 	var baloonsList = ['aqua', 'gold', 'skyblue', 'magenta', 'maroon', 'crimson', 'pink', 'violet', 'indigo', 'blue', 
 				'white', 'black', 'gray', 'chocolate', 'teal', 'green', 'red', 'yellow', 'purple', 'lime', 'coral', 
 				'orange', 'khaki', 'navy', 'seagreen', 'olive', 'wheat', 'linen','turquoise', 'sienna'];
@@ -545,7 +570,8 @@ function checkBaloonGameStatus(){   //Check Game Status
 		var ballDisplayCheck = $('#'+baloonsList[i]).css('display');
 		var viewListLen = viewList.length;
 		if(viewListLen == 0 && ballDisplayCheck == 'none'){
-			resetBaloonGame();
+			//resetBaloonGame();
+			return true;
 		}
 	}
 }
@@ -592,20 +618,34 @@ $(function(){  					//Restart Baloon Game
 	$('#gameTwoScoreCount').text('0');
 	$('#gameTwoLifeCount').text('0');
 	//resetBaloonGame();
+	playbBgroundSound(false);
 	startBaloonGame();
 	});
 });
 /*-------Start Baloon Game ------------*/
 var viewList = []; var hiddenList = [];
 var noOfBalsToRelease = 1;
+var scaleList1 = [1, 3, 1.5, 2, 3, 2.5, 4, 1, 4.5, 3.5];
+var scaleListBig = [1, 6, 1.5, 2, 3, 2.5, 5, 4, 7, 1, 4.5, 5, 7, 5.5, 3.5];
+var scaleListSmall = [1, 3, 1.5, 2, 3, 2.5, 5, 4, 1, 4.5, 5, 3.5];
+var scaleList2;
+if(deviceWidth < 350){scaleList2 = scaleListSmall}else{scaleList2 = scaleListBig};
 function startBaloonGame(){
 	var baloonsList = ['aqua', 'gold', 'skyblue', 'magenta', 'maroon', 'crimson', 'pink', 'violet', 'indigo', 'blue', 
 				'white', 'black', 'gray', 'chocolate', 'teal', 'green', 'red', 'yellow', 'purple', 'lime', 'coral', 
 				'orange', 'khaki', 'navy', 'seagreen', 'olive', 'wheat', 'linen','turquoise', 'sienna'];
 	clearBGameBallUpdate();
 	startGameTimer();
-	playbGameWonSound(false);
-	playbBgroundSound(false);
+	bBgroundSound.pause();	//Stop background sound
+	bBgroundSound.currentTime = 0;
+
+	bGameWonSound.pause();	//Stop WonSound if playing
+	bGameWonSound.currentTime = 0;
+
+	bGameOverSound.pause();	//Stop gameOver sound if playing
+	bGameOverSound.currentTime = 0;
+	//playbGameWonSound(false);
+	//playbBgroundSound(false);
 	playbBgroundSound(true);
 	//resetBaloonGame();
 	//bgameOn = true;
@@ -620,9 +660,11 @@ function startBaloonGame(){
 		var addBalls = randomListColorsFunction(hiddenList);
 		viewList.push(addBalls);	
 		var pos = randomNumbers(0, 92);
-		var scaleSize = randomNumbers(1, 6);
+		//var scaleSize = randomNumbers(1, 6);
+		var scaleSize = randomListColorsFunction(scaleList1);
 		$('#'+addBalls).css('transform', 'scale('+scaleSize+')'); //Resize Ball
 		$('#'+addBalls).css('left', pos+'vw'); //Change position
+		$('#'+addBalls).css('color', addBalls); //Set tail color to baloon color
 		$('#'+addBalls).css('display', 'block');		//Display the baloon
 		hiddenList.splice(hiddenList.indexOf(addBalls), 1);		//Delete the ball from hiddenCol List
 	}
@@ -669,7 +711,7 @@ function selBall(ballID){
 		$('#'+ballToRemove).css('display', 'none'); //Burst the baloon ie. display= none
 		playbBurstSound(); 
 		$('#gameTwoLifeCount').text(scoreGame +=1);
-		checkBaloonGameStatus();
+		//ballsExhaustedStatus();
 		var nextRandColor = randomListColorsFunction(viewList);
 		$('#burstColorSp').text(nextRandColor); //Select a new ball and display
 		if(balGameTypeEasy == true){ //For easy Game
@@ -678,14 +720,15 @@ function selBall(ballID){
 		}
 		youWonBaloonGame();  //Check if you win.
 	}
-	for(var i = 0; i <viewList.length ; i++){ 	//Always ensure No ball is hidden in viewList
+	/*for(var i = 0; i <viewList.length ; i++){ 	//Always ensure No ball is hidden in viewList
 		$('#'+viewList[i]).css('display', 'block');
-	}
-
+	}*/
+	//------New-------
 }
+
 $(function(){ //Change Next display ball
 	$('#burstColorCont').click(function(){
-	if(balGameTypeEasy == true){
+	if(balGameTypeEasy){
 		var nextRandColor = randomListColorsFunction(viewList);
 		$('#burstColorSp').text(nextRandColor);
 		$('#burstColor').css('background-color', nextRandColor);
@@ -720,37 +763,40 @@ function setBalGameBallInterval(){	//Start update
 }
 
 function releaseNewBal(){
-	youWonBaloonGame();
+	//youWonBaloonGame();  //Check if you win.
 	//changeBalPosition();
 	//var indexOfBallToAdd = hiddenCol.indexOf(newBallToAdd); // Get the index of the ball
-	if(hiddenList.length != 0){  //Stop release when hiddenList List is empty
-		//for(var i = 0; i <= noOfBalsToRelease ; i++){
-		var newBallToAdd = randomListColorsFunction(hiddenList); //Select a new ball
-		hiddenList.splice(hiddenList.indexOf(newBallToAdd), 1); //Delete the ball from hiddenCol List
-		var scaleSize = randomNumbers(1, 7);
-		var pos = randomNumbers(0, 92);
-		$('#'+newBallToAdd).css('transform', 'scale('+scaleSize+')'); //Resize Ball
-		$('#'+newBallToAdd).css('left', pos+'vw'); //Change position
-		viewList.push(newBallToAdd); //Add it to viewList List
-		$('#'+newBallToAdd).css('display', 'block'); //Change display to block
-		$('#gameTwoScoreBoard').css('background-color', newBallToAdd);
-		//$('#gameTwoScoreBoard').css('background-color', '');
-		//}
+	if(ballsExhaustedStatus()){youWonBaloonGame();}else{
+		if(hiddenList.length != 0 ){  //Stop release when hiddenList List is empty
+			//for(var i = 0; i <= noOfBalsToRelease ; i++){
+			var newBallToAdd = randomListColorsFunction(hiddenList); //Select a new ball
+			hiddenList.splice(hiddenList.indexOf(newBallToAdd), 1); //Delete the ball from hiddenCol List
+			//var scaleSize = randomNumbers(1, 7);
+			var scaleSize = randomListColorsFunction(scaleList2);
+			var pos = randomNumbers(0, 92);
+			$('#'+newBallToAdd).css('transform', 'scale('+scaleSize+') translateY(0) rotate(-4deg)'); //Resize Ball
+			$('#'+newBallToAdd).css('left', pos+'vw'); //Change position
+			$('#'+newBallToAdd).css('color', newBallToAdd); //Set tail color to baloon color
+			viewList.push(newBallToAdd); //Add it to viewList List
+			$('#'+newBallToAdd).css('display', 'block'); //Change display to block
+			$('#gameTwoScoreBoard').css('background-color', newBallToAdd);
+			//$('#gameTwoScoreBoard').css('background-color', '');
+			//}
+		}else{gameOver_Baloon()}
+		//if(hiddenList.length == 1){  
+		//	gameOver_Baloon()}
+		setTimeout(function(){$('#gameTwoScoreBoard').css('background-color', '')}, 500);
 	}
-	if(hiddenList.length == 1){  
-		gameOver_Baloon()}
-	setTimeout(function(){$('#gameTwoScoreBoard').css('background-color', '')}, 500);
 }
 
 
 
-
-
-/*------ Testing Game -------
+/*------ Testing Game ------
 $(function(){  					
-	$('#pg4HeaderBarRightBtn').click(function(){
-	//changeBalPosition();
-	alert(generateNewBalInterval);
+	$('#colorCheckBtn').click(function(){
+	var scaleList = [1, 0.8, 1.5, 2, 3, 2.5, 5, 4, 1, 4.5, 5,0.6, 5.5, 6, 3.5];
+	var x = randomListColorsFunction(scaleList);
+	$('#colorCheckDisplay').text(x);
 	});
 });
 
@@ -758,14 +804,14 @@ $(function(){
 	$('#burstColorCont11').click(function(){
 	resetBaloonGame();
 	});
-});
+});-*/
 
 $(function(){  				
 	$('#gameTwoScoreBoard').click(function(){
 	alert(viewList+'. Length- '+viewList.length +'\n .HiddenList: '+hiddenList+'. Length- '+hiddenList.length);
 	});
 });
-*/
+
 /*
 function selBall(ballID){
 	//alert($('#'+addBalls).css('transform'));
@@ -1067,3 +1113,29 @@ var baloonsList = {ball1:'aqua', ball2:'gold', ball3:'skyblue', ball4:'magenta',
 
 */
 var a;
+/*
+function releaseNewBal(){
+	youWonBaloonGame();  //Check if you win.
+	//changeBalPosition();
+	//var indexOfBallToAdd = hiddenCol.indexOf(newBallToAdd); // Get the index of the ball
+	if(hiddenList.length != 0){  //Stop release when hiddenList List is empty
+		//for(var i = 0; i <= noOfBalsToRelease ; i++){
+		var newBallToAdd = randomListColorsFunction(hiddenList); //Select a new ball
+		hiddenList.splice(hiddenList.indexOf(newBallToAdd), 1); //Delete the ball from hiddenCol List
+		//var scaleSize = randomNumbers(1, 7);
+		var scaleSize = randomListColorsFunction(scaleList2);
+		var pos = randomNumbers(0, 92);
+		$('#'+newBallToAdd).css('transform', 'scale('+scaleSize+') translateY(0) rotate(-4deg)'); //Resize Ball
+		$('#'+newBallToAdd).css('left', pos+'vw'); //Change position
+		$('#'+newBallToAdd).css('color', newBallToAdd); //Set tail color to baloon color
+		viewList.push(newBallToAdd); //Add it to viewList List
+		$('#'+newBallToAdd).css('display', 'block'); //Change display to block
+		$('#gameTwoScoreBoard').css('background-color', newBallToAdd);
+		//$('#gameTwoScoreBoard').css('background-color', '');
+		//}
+	}
+	if(hiddenList.length == 1){  
+		gameOver_Baloon()}
+	setTimeout(function(){$('#gameTwoScoreBoard').css('background-color', '')}, 500);
+}
+*/

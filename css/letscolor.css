@@ -24,7 +24,7 @@
 	background-color: dodgerblue;
 	font-size: 20px;
 }
-#game1BtnHome, #game2BtnHome, #game3BtnHome {border-radius: 10px; margin-bottom: 15px;}
+#game1BtnHome, #game2BtnHome, #game3BtnHome, #gameThreeBtnHome {border-radius: 10px; margin-bottom: 15px;}
 
 #mainHome {background-color: #7ee5fa;}
 #mainHome > div{text-align: center;}
@@ -102,7 +102,8 @@
 #gameSelectPg3{padding-left: 10px; font-weight: bolder; font-size: 18px; color: blue;}
 
 #gameOneScore{color: black; border: 2px solid grey; border-radius: 5px; 
-    font-weight: bolder; font-size: 18px; padding: 0; padding-left: 0;}
+    font-weight: bolder; font-size: 18px; padding: 0; padding-left: 0;
+  display: flex; float:right; width:auto; background-color: white;}
 #gameOneScoreSp{font-size: 20px; padding-left: 5px;}
 #gameOneScoreSp21{color: red; font-family: arial;}
 
@@ -152,81 +153,70 @@
 #selectCat > div:nth-child(1){background:linear-gradient(white,lime,white); margin-bottom: 10px;}
 #selectCat > div:nth-child(2){background:linear-gradient(white,red,white);}
 #gameOneEasy, #gameOneHard {padding: 15px; border-radius: 15px; font-weight: bolder; padding-top: 10px; padding-bottom: 10px;
-    font-size: 18px; transition-duration:1s; border: 3px inset snow;  
-    color: white; font-size: 14px; width: 60%;}
+  transition-duration:1s; border: 3px inset snow;  
+    color: blue; font-size: 14px; width: 60%;}
 #gameOneEasy{background:linear-gradient(white,lime,white);}
 #gameOneHard{background:linear-gradient(white,red,white);}
 
 #gameLine{width: 100%; background-color: red; height:1px}
-#gameOneScore{display: flex; float:right; width:30%;
-    background-color: white;}
+
 /* Home Page- Binod*/
 .binod {
-    position:fixed;
-    height:60px;
-    width:60px;
-    border-radius: 30px;
-    font-size:20px;
+  position:fixed;
+  display:inline-block;
+   width:120px;
+  height:145px;
+  background:hsl(215,50%,65%);
+  border-radius:80%;
+  box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);
+  margin:20px 30px;
+  transition:transform 0.5s ease;
+  /*z-index:10;*/
+  animation:balloons 4s ease-in-out infinite;
+  transform-origin:bottom center;
+  line-height: 150px;
+  color: white;
+  text-align: center;
+  text-shadow: -2px 0 gray, 0 -2px gray, 2px 0 gray, 0 -2px gray;
+  font-size: bolder;
 }
-#ele1{
-	background-color: dodgerblue; /*red*/
-    left:10vw;
-    animation:anim 4.9s linear infinite;
-    transform:scale(1.4);
+
+@keyframes balloons {
+  0%,100%{ transform:translateY(0) rotate(-4deg); }
+  50%{ transform:translateY(-25px) rotate(4deg); }
 }
-#ele2{
-	background-color: dodgerblue; /*yellow*/
-    left:15vw;
-    color: coral;
-    animation:anim 5s linear infinite;
-    transform:scale(1.3);
+
+
+.binod:before {
+  content:"▲";
+  font-size:20px;
+  color:rgba(0, 0, 0, 0.5);
+  display:block;
+  text-align:center;
+  width:100%;
+  position:fixed;
+  bottom:-78px;
+  z-index:-100;
 }
-#ele3{
-	background-color: dodgerblue; /*purple*/
-    left:36vw;
-    animation:anim 4.5s linear infinite;
-    transform:scale(2);
-}
-#ele4{
-	background-color: dodgerblue; /*lime*/
-    left:70vw;
-    animation:anim 7s linear infinite;
-    transform:scale(0.65);
-}
-#ele5{
-	background-color: dodgerblue;  /*coral*/
-    left:76vw;
-    color: coral;
-    text-shadow: 20px 20px 2px steelblue; 
-    animation:anim 12s linear infinite;
-    transform:scale(4);
-}
-#ele6{
-	background-color: dodgerblue; /*aqua*/
-    left:52vw;
-    animation:anim 5s linear infinite;
-    transform:scale(1.3);
-}
-#ele7{
-	background-color: dodgerblue; /*gold*/
-    left:90vw;
-    animation:anim 4.8s linear infinite;
-    transform:scale(1.4);
-}
-#ele8{
-	background-color: dodgerblue; /*dodgerblue*/
-    left:6vw;
-    animation:anim 6.1s linear infinite;
-}
-@keyframes anim{
-    0%{
-        top:-20px;
-    }
-    100%{
-        top:100vh;
-    }
-}
+
+.binod:nth-child(2){ background:hsl(245,40%,65%); animation-duration:3s; left:76vw; }
+.binod:nth-child(3){ background:hsl(139,50%,60%); animation-duration:4.5s; left:40vw;}
+.binod:nth-child(4){ background:hsl(59,50%,58%); animation-duration:6s; left: 96vw;}
+.binod:nth-child(5){ background:hsl(23,55%,57%); animation-duration:5s; left:7vw;}
+.binod:nth-child(6){ background:hsl(123,50%,40%); animation-duration:7s; left:25vw;}
+.binod:nth-child(7){ background:hsl(96,70%,45%); animation-duration:9s; left:35vw;}
+
+@keyframes balloons {
+0% { transform: scale(1); transform:translateY(0) rotate(-15deg); top: -150px;} 
+20% { transform: scaleY(0.95) scaleX(1.05); } 
+48% { transform: scaleY(1.2) scaleX(0.9); transform:translateX(-95px) rotate(-30deg); } 
+68% { transform: scaleY(0.8) scaleX(1.02) rotate(20deg) translateX(-35px); } 
+80% { transform: scaleY(1.02) scaleX(0.98) rotate(-10deg); }
+100% { transform: scale(1);transform:translateY(0) rotate(10deg); top: 110vh;}
+} 
+
 /* Home Page- /Binod*/
+
 /*  Page2- Rotate Color ------*/
 #colorRotate{text-align: center; display: flex; justify-content: center;
             transform: scale(1.2, 1.2);}
@@ -237,7 +227,7 @@
     height: 30px;
     padding: 5px;
     margin: 5px;
-    line-height: 15px;
+    line-height: 30px;
     text-align: center;
     border:2px solid white; border-radius:15px;
     box-shadow: 10px 10px 10px grey;
@@ -340,7 +330,7 @@ font-weight: bolder;
     height: 30px;
     padding: 5px;
     margin: 5px;
-    line-height: 15px;
+    line-height: 30px;
     text-align: center;
     border:2px solid white; border-radius:15px;
     box-shadow: 10px 10px 10px grey;
@@ -377,26 +367,39 @@ font-weight: bolder;
  animation: rotate-left 10s linear infinite;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
     #colorRotate {transform: scale(1, 1);}
     #colorRotate_burstBaloon{transform: scale(1, 1);}
 }
 @media only screen and (max-width: 430px){
-    #mainHome > div > span{
+    #mainHome > div > span{         /*--- ColorScroll ----*/
     width: 20px; font-size: 14px;
     height: 20px;
     border-radius:10px;}
 }
 @media only screen and (max-width: 400px){
+    /*#colorScroll{transform: scale(0.7, 0.7);}*/
     #colorRotate {transform: scale(0.8, 0.8);}
     #colorRotate_burstBaloon{transform: scale(0.8, 0.8);}
     #gameTwoScoreBoard{transform: scale(0.8, 0.8);}
+    #bGameOver{transform: scale(0.8, 0.8);}
+    #pg2HeaderBarDiv > span{font-size: 14px;}
+    #bGameBtnCont{transform: scale(0.7, 0.7);}
 
-    #mainHome > div > span{
-    width: 10px; font-size: 13px;
-    height: 8px;
-    border-radius:10px;}
+    #mainHome > div > span{      /*--- ColorScroll ----*/
+    width: 20px; font-size: 13px;
+    height: 20px;
+    border-radius:10px;
+    padding: 7px;  }
 }
+@media only screen and (max-width: 370px){
+  #gameOneScore{font-size: 14px;}
+   #gameOneScoreSp{font-size: 14px;}
+   #gameOneEasy, #gameOneHard {font-size: 13px; padding: 7px; padding-left: 5px; padding-right: 5px;}
+   #colorRotate {transform: scale(0.6, 0.6);}
+    #colorRotate_burstBaloon{transform: scale(0.6, 0.6);}
+}
+
 /* ----------Page 3 --------------*/
 #mainPg3 {border: 2px solid grey; background-color: coral; margin: 10px;
 }
@@ -404,7 +407,7 @@ font-weight: bolder;
 
 /* ----------Page 4 --------------*/
 #pg4HeaderBarLeftBtn {background-color: dodgerblue; font-size: 20px;}
-#mainPg4 {background:linear-gradient(lightgrey, white);}
+#mainPg4 {background:linear-gradient(lightgrey, white); height: 500px;}
 #gameTwoScoreBoard{color: black; border: 2px solid grey; border-radius: 5px; font-weight: bolder; font-size: 18px;
     display: inline-block; float:right; width:auto; background-color: white; text-align: left; padding: 5px;}
 #gameTwoScoreCont{text-align: left; font-size: 16px; }
@@ -425,7 +428,7 @@ font-weight: bolder;
 #exitBGameBtn{width: 100%; padding: 5px; background-color: rgba(250,0,0,0.5); text-align: center; font-size: 18px; border-radius: 15px; margin-top: 10px; margin-bottom: 10px;}
 #bGameBtn{width: 70px; height: 70px; padding: 0px;  background-color: dodgerblue; font-size: 40px; border: 2px solid white; 
     border-radius: 50px; text-align: center; text-shadow: none; margin-bottom: 10px; color: white;
-    transition: transform 0.5s;}
+    transition: transform 0.5s;  line-height: 70px;}
 
 #startBallGame{background-color: aqua; text-align: center; font-weight: bolder;
     font-size: 18px;}
@@ -444,18 +447,51 @@ font-weight: bolder;
         opacity: 1;
     }
 }
-/* Home Page- baloonsCont*/
+/* Home Page- baloonsCont
+.binod {
+  position:fixed;
+  display:inline-block;
+   width:120px;
+  height:145px;
+  background:hsl(215,50%,65%);
+  border-radius:80%;
+  box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);
+  z-index:10;
+
+  margin:20px 30px;
+  transition:transform 0.5s ease;
+  animation:balloons 4s ease-in-out infinite;
+  transform-origin:bottom center;
+  line-height: 150px;
+  color: white;
+  text-align: center;
+  text-shadow: -2px 0 gray, 0 -2px gray, 2px 0 gray, 0 -2px gray;
+  font-size: bolder;
+}*/
+
 .baloons {
     position:fixed;
     height:60px;
     width:60px;
     border-radius: 30px;
     font-size:20px;
+    box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);
 }
+.baloons:before {
+  content:"▲";
+  font-size:14px;
+  display:block;
+  text-align:center;
+  width:100%;
+  position:fixed;
+  bottom:-12px;
+  z-index:-100;
+}
+
 #aqua{
     background-color: aqua; /*red*/
     //left:10vw;
-    animation:anim 6s linear infinite;
+    animation:animBalls 6s linear infinite;
     /*transform:scale(1.4);*/
     transform:scale(1);
 }
@@ -505,7 +541,7 @@ font-weight: bolder;
 #violet{
     background-color: violet; /*dodgerblue*/
     //left:45vw;
-    animation:anim 4s linear infinite;
+    animation:animBalls 4s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
@@ -525,7 +561,7 @@ font-weight: bolder;
 #white{
     background-color: white; /*red*/
     //left:10vw;
-    animation:anim 2.5s linear infinite;
+    animation:animBalls 2.5s linear infinite;
     /*transform:scale(0.8);*/
     transform:scale(1);
 }
@@ -569,14 +605,14 @@ font-weight: bolder;
 #red{
     background-color: red; /*gold*/
     //left:90vw;
-    animation:animBalls 4s linear infinite;
+    animation:animBalls 1s linear infinite;
     /*transform:scale(2.5);*/
     transform:scale(1);
 }
 #yellow{
     background-color: yellow; /*dodgerblue*/
     //left:40vw;
-    animation:anim 2s linear infinite;
+    animation:animBalls 2s linear infinite;
     /*transform:scale(4);*/
     transform:scale(1);
 }
@@ -663,12 +699,238 @@ font-weight: bolder;
     /*transform:scale(2);*/
     transform:scale(1);
 }
+
 @keyframes animBalls{
     0%{
-        top:-20px;
+        top:-20px; 
     }
     100%{
         top:100vh;
     }
 }
-/* Home Page- /baloonsCont*/
+
+/* ----- Page5 Color Mix -----*/
+#pg5HeaderBar, #pg5FooterBar{
+  background-color: dodgerblue;
+}
+#pg5HeaderBarDiv{padding-left: 15px;}
+#pg5HeaderBar > div {
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: center;
+  letter-spacing: 4px;
+  height: 48px;
+  line-height: 43px;
+}
+#mainPg5 {background:linear-gradient(rgba(186,119,69,0.9), rgba(186,119,69,0.6), rgba(186,119,69,0.4), rgba(186,119,69,0.2));}
+#pg5HeaderBarLeftBtn {background-color: dodgerblue; font-size: 20px;}
+#gameSelectPg5{padding-left: 10px; font-weight: bolder; font-size: 18px; color: blue;}
+
+#game3Score{color: black; border: 2px solid grey; border-radius: 5px; 
+    font-weight: bolder; font-size: 16px; padding: 0; padding-left: 2px; padding-right: 2px;
+  display: flex; float:right; width:auto; background-color: white;}
+#game3ScoreSp{font-size: 16px; padding-left: 5px;}
+#game3ScoreSp21{color: red; font-family: arial;}
+
+
+#pg5HeaderBar > div > span:nth-child(1){color: black;}
+#pg5HeaderBar > div > span:nth-child(2){color: red;}
+#pg5HeaderBar > div > span:nth-child(3){color: yellow;}
+#pg5HeaderBar > div > span:nth-child(4){color: lime;}
+#pg5HeaderBar > div > span:nth-child(5){color: white;}
+#pg5HeaderBar > div > span:nth-child(6){color: red;}
+#pg5HeaderBar > div > span:nth-child(7){color: purple;}
+#pg5HeaderBar > div > span:nth-child(8){color: lime;}
+#pg5HeaderBar > div > span:nth-child(9){color: red;}
+#pg5HeaderBar > div > span:nth-child(10){color: white;}
+#pg5HeaderBar > div > span:nth-child(11){color: coral;}
+#pg5HeaderBar > div > span:nth-child(12){color: orange;}
+#pg5HeaderBar > div > span:nth-child(13){color: aqua;}
+#pg5HeaderBar > div > span:nth-child(14){color: purple;}
+
+#nameTheColorGame3, #nameTheColorPg5{font-weight: bolder; font-size: 20px; background-color:snow;
+      text-align: center;
+/* Starting position */
+ transform:translateX(70%);
+ animation: scroll-left-pg5 10s linear infinite;
+}
+
+@keyframes scroll-left-pg5 {
+ 0%  { 
+ transform: translateX(50%);    
+ }
+ 50% { 
+ transform: translateX(-50%); 
+ }
+}
+#colorCheck :hover{background:linear-gradient(red)}
+#gameCheckColorBtn{border: 2px solid lime; text-shadow: none;}
+#gameLine{width: 100%; background-color: red; height:1px}
+
+#game3OptnsBtnsCont1{align-items: center; display: flex; justify-content: center;}
+#game3OptnsBtnsCont1 > button {margin: 10px; padding-left: 5px; font-weight: bolder; font-size: 12px;}
+#game3OptnsBtnsCont2{align-items: center; display: flex; justify-content: center;}
+#game3OptnsBtnsCont2 > button {margin: 10px; padding-left: 5px; font-weight: bolder; font-size: 12px;}
+#game3OptnsBtnsCont3{align-items: center; display: flex; justify-content: center;}
+#game3OptnsBtnsCont3 > button {margin: 10px; padding-left: 5px; font-weight: bolder; font-size: 12px;}
+#game3OptnsBtnsCont4{align-items: center; display: flex; justify-content: center;}
+#game3OptnsBtnsCont4 > button {margin: 10px; padding-left: 5px; font-weight: bolder; font-size: 12px;}
+#game3OptnsBtnsCont5{align-items: center; display: flex; justify-content: center;}
+#game3OptnsBtnsCont5 > button {margin: 10px; padding-left: 5px; font-weight: bolder; font-size: 12px;}
+
+#game3BtnsCont1{display: flex; align-items: center;}
+#game3StartBtn {margin-right: 2px;}
+#game3LifeLineBtn {margin-left: 2px; border: 2px solid lime; text-shadow: none;}
+
+
+.bino {
+  position:fixed;
+  display:inline-block;
+   width:120px;
+  height:145px;
+  background:hsl(215,50%,65%);
+  border-radius:80%;
+  box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);
+  margin:20px 30px;
+  transition:transform 0.5s ease;
+  /*z-index:10;*/
+  animation:balloons-game3 4s ease-in-out infinite;
+  transform-origin:bottom center;
+  line-height: 150px;
+  color: white;
+  text-align: center;
+  text-shadow: -2px 0 gray, 0 -2px gray, 2px 0 gray, 0 -2px gray;
+  font-size: bolder;
+}
+
+@keyframes balloons-game3 {
+  0%,100%{ transform:translateY(0) rotate(-4deg); }
+  50%{ transform:translateY(-25px) rotate(4deg); }
+}
+
+
+.bino:before {
+  content:"▲";
+  font-size:20px;
+  color:rgba(0, 0, 0, 0.5);
+  display:block;
+  text-align:center;
+  width:100%;
+  position:fixed;
+  bottom:-78px;
+  z-index:-100;
+}
+
+.bino:nth-child(2){ background:hsl(245,40%,65%); animation-duration:3s; left:76vw; }
+.bino:nth-child(3){ background:hsl(139,50%,60%); animation-duration:4.5s; left:40vw;}
+.bino:nth-child(4){ background:hsl(59,50%,58%); animation-duration:6s; left: 96vw;}
+.bino:nth-child(5){ background:hsl(23,55%,57%); animation-duration:5s; left:7vw;}
+.bino:nth-child(6){ background:hsl(123,50%,40%); animation-duration:7s; left:25vw;}
+.bino:nth-child(7){ background:hsl(96,70%,45%); animation-duration:9s; left:35vw;}
+
+@keyframes balloons-game3 {
+0% { transform: scale(1); transform:translateY(0) rotate(-15deg); top: -150px;} 
+20% { transform: scaleY(0.95) scaleX(1.05); } 
+48% { transform: scaleY(1.2) scaleX(0.9); transform:translateX(-95px) rotate(-30deg); } 
+68% { transform: scaleY(0.8) scaleX(1.02) rotate(20deg) translateX(-35px); } 
+80% { transform: scaleY(1.02) scaleX(0.98) rotate(-10deg); }
+100% { transform: scale(1);transform:translateY(0) rotate(10deg); top: 110vh;}
+} 
+
+/* Home Page- /Binod*/
+
+/*  Page5- Rotate Color ------*/
+
+#famWithColors{
+font-weight: bolder;
+ margin-top: 0;
+ font-size: 18px;
+ text-align: center;
+ word-wrap: normal;
+
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);    
+ transform:translateX(100%);
+ /* Apply animation to this element */  
+ -moz-animation: scroll-left-game3 15s linear infinite;
+ -webkit-animation: scroll-left-game3 15s linear infinite;
+ animation: scroll-left-game3 15s linear infinite;
+}
+
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left-game3 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes scroll-left-game3 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes scroll-left-game3 {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%);       
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Browser bug fix */
+ -webkit-transform: translateX(-100%); /* Browser bug fix */
+ transform: translateX(-100%); }
+}
+/* Page2- /Rotate Color*/
+
+#colorRotate_burstBaloon{text-align: center; display: flex; justify-content: center;
+            transform: scale(1.2, 1.2);}
+#colorRotate_burstBaloon > div{
+    background-color: snow;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    line-height: 30px;
+    text-align: center;
+    border:2px solid white; border-radius:15px;
+    box-shadow: 10px 10px 10px grey;
+}
+
+
+
+
+/* ----- Page3 Color Mix -----*/
+/*canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+#myCanvas1 {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+.bouncingBalls{
+  width: 50px; height: 50px; background-color: blue; margin: 10px;
+  border-radius: 25px;
+  display: inline-block;
+  position: relative;
+  animation: animBounce 6s linear infinite;
+  font-weight: bolder; line-height: 50px; color: white; text-align: center;
+}
+
+@keyframes animBounce{
+    0%{top: 0px; background-color: red;}
+    20%{ top:200px;}
+    40%{top:50px;}
+    60%{top:200px;}
+    80%{top:100px;}
+    90%{top:200px; transform:  scaleX(1.5)}
+    91%{transform: scaleY(1.2) scaleX(0.9); transform:translateX(-195px) rotate(-30deg); }
+    100%{ top:200px; transform: scaleY(1) scaleX(0.6) rotate(20deg) translateX(-135px); }
+}
+
+0% { transform: scale(1); transform:translateY(0) rotate(-15deg); top: -150px;} 
+20% { transform: scaleY(0.95) scaleX(1.05); } 
+48% { transform: scaleY(1.2) scaleX(0.9); transform:translateX(-95px) rotate(-30deg); } 
+68% { transform: scaleY(0.8) scaleX(1.02) rotate(20deg) translateX(-35px); } 
+80% { transform: scaleY(1.02) scaleX(0.98) rotate(-10deg); }
+100% { transform: scale(1);transform:translateY(0) rotate(10deg); top: 110vh;}
+*/

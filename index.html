@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/letscolor.css">
         <script src="js/jquery.js"></script>
         <script type="text/javascript" src="js/letscolor.js"></script>
+        <script type="text/javascript" src="js/sonyAppWIP.js"></script>
         <script type="text/javascript">
         	$(document).on('mobileinit', function(){
         		$.mobile.defaultPageTransition = 'slidefade'; });
@@ -60,9 +61,10 @@
 		<span>O</span>
 		<span>R</span>
 	</div>	
-	<br><hr>
+	<br><br><hr><br>
 	<input type="text" name="inputColor" id="inputColor" placeholder="&#127752 Enter your favourite color....&#128150 &#128150">
 	<br>
+	<a href="#page5" class="ui-btn" class="homeNav" id="gameThreeBtnHome">Game: What Color is this?</a>
 	<a href="#page2" class="ui-btn" class="homeNav" id="game1BtnHome" onclick="goToGameOne();">Game: Name the Color</a>
 	<a href="#page4" class="ui-btn" class="homeNav" id="game2BtnHome">Game: Burst the Baloon</a>
 	<a href="#page3" class="ui-btn" class="homeNav" id="game3BtnHome">Lets Mix the Color</a>
@@ -190,9 +192,9 @@
 	</div>
 	<div class="w3-card w3-center" >
 		<div class="w3-card w3-left" style="width: 15%" id="colorDiv">
-			<p>Red:</p>
+			<!--<p>Red:</p>
 			<p>Green:</p>
-			<p>Blue:</p>
+			<p>Blue:</p>-->
 		</div>
 		<div class="w3-card w3-right" style="width: 85%" >
 			<div id="redContPg3"><input type="range" min="0" max="255" value="255" id="redSlider" onchange =" redSliderFun(this.value)" onkeyup=" redSliderFun(this.value)"></div>
@@ -200,7 +202,12 @@
 		  	<div id="blueContPg3"><input type="range" min="0" max="255" value="255" id="blueSlider" onchange ="blueSliderFun(this.value)" onkeyup="blueSliderFun(this.value)"></div>
 	  	</div>
   	</div>
-  	<br>
+  	<br><br><br>
+  	<div id="myCanvas1" style="display: none;">
+  		<div class="bouncingBalls">A</div>
+  		<div class="bouncingBalls">B</div>
+  		<div class="bouncingBalls">C</div>
+  	</div>
   	<!--<button id="pg3Btn" style="display: block;">PressMe</button>-->
 </div><!-- /content -->
 	 <!-- <div data-enhance='false'>JQM will not enhance on these blocks of code
@@ -222,8 +229,8 @@
 		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-notext" id="pg4HeaderBarLeftBtn">home</a>
 		<!--<a href="#" class="ui-btn ui-btn-inline ui-btn-icon-right" id="pg4HeaderBarRightBtn">&#9193;</a>-->
 	</div><!-- /header -->
-
-<div role="main" class="ui-content" id="mainPg4">
+	<!--<div id="displayTest1" style="background-color: blue; font-size: 16px; font-weight: bolder; color: white;">BallSize</div>-->
+<div role="main" class="ui-content" id="mainPg4" >
 	<div id="baloonsCont" style="display: block;">
 		<div class="baloons" id="aqua" onclick="selBall(this.id)" style="display: none;"></div>
         <div class="baloons" id="gold" onclick="selBall(this.id)" style="display: none;"></div>
@@ -257,7 +264,7 @@
         <div class="baloons" id="sienna" onclick="selBall(this.id)" style="display: none;"></div>      
 	</div>
 
-	<div id="burstColorCont" style="display: none;"><button id="burstColor">Shake/Next: <span id="burstColorSp"></span></button>
+	<div id="burstColorCont" style="display: none;"><button id="burstColor"><span id="burstColorSp1">Shake/Next: </span><span id="burstColorSp"></span></button>
 	</div>
 	
 	<div id="startBallGameCont">
@@ -304,22 +311,21 @@
 		<div class="w3-display-container" id="bGameOverContPry" style="display: none;">
 			<div id="bGameOverCont">
 				<div id="bGameOver" class="w3-display-bottommiddle">
-					<div id="bGameOverCall" >GAME OVER!!!</div>
+					<br><div id="bGameOverCall" >GAME OVER!!!</div><hr>
 					<div id="balBusrtCountCont"><span id="balBusrtCountNo"></span><span> Baloons bursted in </span><span id="balBusrtCountTime"></span></div>
 				</div>
 			</div>
 		</div>
 	<div style="display: none;">    
-		<input type="text" name="inputColor" id="inputColorPg2" placeholder="Enter your answer...">
-		<br>
-		<button id="colorCheck" onclick="randTest()">PresMe</button>
+		<p id="colorCheckDisplay">Randoms</p>
+		<button id="colorCheckBtn" onclick="randTest()">PresMe</button>
 	</div>
 </div><!-- /content -->
 	<!--<div id="bGameClientSec" style="display: block;">	
 		<div id="updateBalInterval" style="visibility: hidden;">5000</div>
 	</div>-->
 	<!--<p id="testNoRand" style="color: red; font-size: 16px">Number</p>-->
-	<div id="bGameBtnCont" style="display: none;">
+	<div id="bGameBtnCont" style="display: none;" >
 		<div id="exitCont" style="display: none;">
 			<div id="pulseBGameBtn">Restart</div>
 			<div id="exitBGameBtn">Exit</div>
@@ -330,6 +336,65 @@
 		
 	</div>
 </div><!-- /page -->
+
+<!-- Start of Page5 -->
+<div data-role="page" id="page5">
+	<div data-role="header" data-position="fixed" id="pg5HeaderBar">
+		<div id="pg5HeaderBarDiv"><span></span><span> N</span><span>A</span><span>M</span><span>E</span><span></span><span> T</span><span>H</span><span>E</span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span></div>
+		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-notext" id="pg5HeaderBarLeftBtn">home</a>
+	</div><!-- /header -->
+	<div id="nameTheColorDiv" style="display: block;"><div id="nameTheColorGame3">
+	</div></div>
+<div role="main" class="ui-content" id="mainPg5">
+
+	<div id="famWithColors">Familiarize yourself with colors...</div>
+	<div id="fallingbinos" style="display: none;">
+		<div class="bino" id="bin1"></div>
+        <div class="bino" id="bin2"></div>
+        <div class="bino" id="bin3"></div>
+        <div class="bino" id="bin4"></div>
+        <div class="bino" id="bin5"></div>
+        <div class="bino" id="bin6"></div>
+        <div class="bino" id="bin7"></div>
+        <div class="bino" id="bin8"></div>
+	</div>
+
+	<button id="game3Score" style="display: block;">Score: <span id="game3ScoreSp">00</span><br><span id="game3ScoreSp2">Life: </span><span id="game3ScoreSp21">3</span>
+	</button>	
+	<br><br><br><br><hr>
+	<div id="game3OptnsBtnsCont">
+		<div id="game3OptnsBtnsCont1">	
+			<button id="game3Optn1" onclick="game3BallSelect(this.id)">Color1</button>
+			<button id="game3Optn2" onclick="game3BallSelect(this.id)">Color2</button>
+		</div>
+		<div id="game3OptnsBtnsCont2">	
+			<button id="game3Optn3" onclick="game3BallSelect(this.id)">Color3</button>
+			<button id="game3Optn4" onclick="game3BallSelect(this.id)">Color4</button>
+		</div>
+		<div id="game3OptnsBtnsCont3">	
+			<button id="game3Optn5" onclick="game3BallSelect(this.id)">Color5</button>
+			<button id="game3Optn6" onclick="game3BallSelect(this.id)">Color6</button>
+		</div>
+		<div id="game3OptnsBtnsCont4">	
+			<button id="game3Optn7" onclick="game3BallSelect(this.id)">Color7</button>
+			<button id="game3Optn8" onclick="game3BallSelect(this.id)">Color8</button>
+		</div>
+		<div id="game3OptnsBtnsCont5">	
+			<button id="game3Optn9" onclick="game3BallSelect(this.id)">Color9</button>
+			<button id="game3Optn10" onclick="game3BallSelect(this.id)">Color10</button>
+		</div>
+		<div id="game3BtnsCont1">	
+			<button id="game3StartBtn">Restart</button>
+			<button id="game3LifeLineBtn">Life line</button>
+		</div>
+	</div>
+	<div id="wrongAnsCount"></div>
+</div><!-- /content -->
+	<!-- <div data-role="footer" data-position="fixed" id="pg2FooterBar">
+		<h4></h4>
+	</div>---/footer -->
+</div><!-- /page -->
+
 <style>
 #redSlider {
   -webkit-appearance: none;
