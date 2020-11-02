@@ -65,7 +65,7 @@ $(function(){
 function setHeight_HomePage(){
 		var pos = $('#mainHome').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight/4*3)+'px';
+		var elementHeight = (deviceHeight*0.75)+'px';
 		$('#mainHome').css('height', elementHeight);
 }
 /* ------- Testing -------*/
@@ -174,16 +174,42 @@ function blueSliderFun(value){
 	}
 }
 
+var allBallsColor1= ["IndianRed",	"LightCoral",	"Salmon",	"DarkSalmon",	"LightSalmon",	"Crimson",	"Red",	"FireBrick",	"DarkRed",	"Pink",	"LightPink",	"HotPink",	"DeepPink",	"MediumVioletRed",	"PaleVioletRed",	"Coral",	"Tomato",	"OrangeRed",	"DarkOrange",	"Orange",	"Gold",	"Yellow",	"LightYellow",	"LemonChiffon",	"LightGoldenrodYellow",	"PapayaWhip",	"Moccasin",	"PeachPuff",	"PaleGoldenrod",	"Khaki",	"DarkKhaki",	"Lavender",	"Thistle",	"Plum",	"Violet",	"Orchid",	"Fuchsia",	"Magenta",	"MediumOrchid",	"MediumPurple",	"BlueViolet",	"DarkViolet",	"DarkOrchid",	"DarkMagenta",	"Purple",	"RebeccaPurple",	"Indigo",	"MediumSlateBlue",	"SlateBlue",	"DarkSlateBlue",	"GreenYellow",	"Chartreuse",	"LawnGreen",	"Lime",	"LimeGreen",	"PaleGreen",	"LightGreen",	"MediumSpringGreen",	"SpringGreen",	"MediumSeaGreen",	"SeaGreen",	"ForestGreen",	"Green",	"DarkGreen",	"YellowGreen",	"OliveDrab",	"Olive",	"DarkOliveGreen",	"MediumAquamarine",	"DarkSeaGreen",	"LightSeaGreen",	"DarkCyan",	"Teal",	"Aqua",	"Cyan",	"LightCyan", "PaleTurquoise",	"Aquamarine",	"Turquoise",	"MediumTurquoise",	"DarkTurquoise",	"CadetBlue",	"SteelBlue",	"LightSteelBlue",	"PowderBlue",	"LightBlue",	"SkyBlue",	"LightSkyBlue",	"DeepSkyBlue",	"DodgerBlue",	"CornflowerBlue",	"RoyalBlue",	"Blue",	"MediumBlue",	"DarkBlue",	"Navy",	"MidnightBlue",	"Cornsilk",	"BlanchedAlmond",	"Bisque",	"NavajoWhite",	"Wheat",	"BurlyWood",	"Tan",	"RosyBrown",	"SandyBrown",	"Goldenrod",	"DarkGoldenrod",	"Peru",	"Chocolate",	"SaddleBrown",	"Sienna",	"Brown",	"Maroon",	"White",	"Snow",	"Honeydew",	"MintCream",	"Azure",	"AliceBlue",	"GhostWhite",	"WhiteSmoke",	"Seashell",	"Beige",	"OldLace",	"FloralWhite",	"Ivory",	"AntiqueWhite",	"Linen",	"LavenderBlush",	"MistyRose",	"Gainsboro",	"LightGray",	"LightGrey",	"Silver",	"DarkGray",	"DarkGrey",	"Gray",	"Grey",	"DimGray",	"DimGrey",	"LightSlateGray",	"LightSlateGrey",	"SlateGray",	"SlateGrey",	"DarkSlateGray",	"DarkSlateGrey", "Black"];
+var num = 0;
+$(function(){  						
+	$('#page3TestBtn1').click(function(){
+	if(num < allBallsColor1.length){
+		var col = allBallsColor1[num];
+		//$('#nameTheColorPg3S1').text('Color name: '+col+' No: '+num);
+		$('#nameTheColorPg3S1').text('Color name: '+col);
+		$('#mainPg3').css('background-color', col);
+	}
+	if(num == allBallsColor1.length-1){
+		num = allBallsColor1.length-1;
+	}else{ num += 1}
+	});
+});
+$(function(){  				
+	$('#page3TestBtn2').click(function(){
+	if(num > 0){
+		num -= 1;
+	var col = allBallsColor1[num];
+	$('#nameTheColorPg3S1').text('Color name: '+col);
+	$('#mainPg3').css('background-color', col);
+	}
+	});
+});
+
 function setHeight_Page2(){
 		var pos = $('#mainPg2').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight/4*3) +'px';
+		var elementHeight = (deviceHeight*0.75) +'px';
 		$('#mainPg2').css('height', elementHeight);
 }
 function setHeight_Page3(){
 		var pos = $('#mainPg3').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight/4*3) +'px';
+		var elementHeight = (deviceHeight*0.75) +'px';
 		$('#mainPg3').css('height', elementHeight);
 }
 
@@ -299,10 +325,12 @@ function playBackgroundSound(){
 }
 
 function playCorrectSound(){
+	wrongSound.currentTime = 0;
 	correctSound.play();
 	correctSound.loop = false;
 }
 function playWrongSound(){
+	correctSound.currentTime = 0;
 	wrongSound.play();
 	wrongSound.loop = false;
 }
@@ -458,7 +486,7 @@ $(function(){ 	//HELP - Check the Answer
 	});
 })
 
-/* -------- Baloon Game with Javascript Object -------*/
+/* -------- Baloon Game with Javascript  -------*/
 
 //--------- Game Reset/Exit Primary Btn --------
 $(function(){
@@ -595,15 +623,30 @@ function youWonBaloonGame(){
 		}			
 	}
 }
-function gameOver_Baloon(){ 		//GAME OVER !!
-	$('#bGameOver').text('GAME OVER!!!');
+
+function youWonBaloonGame2(){
+	resetBaloonGame();	
+	$('#bGameOverCall').text('Good Job! You Won!'); //YOU WON;
+	$('#balBusrtCountNo').text($('#gameTwoLifeCount').text());
+	$('#balBusrtCountTime').text(min+'m '+sec+'s');
+	$('#bGameOverContPry').css('display', 'block');	
 	$('#burstColorCont').css('display', 'none');
-	$('#bGameOverContPry').css('display', 'block');  
-	clearBGameBallUpdate(); 
-	bBgroundSound.pause(); 
-	bGameOverSound.play();
-	stopGameTimer();
-	//bgameOn = false;
+	playbBgroundSound(false);
+	playbGameWonSound(true); 
+}
+
+function gameOver_Baloon(){ 		//GAME OVER !!
+	if(ballsExhaustedStatus()){youWonBaloonGame2();
+	}else{
+		$('#bGameOver').text('GAME OVER!!!');
+		$('#burstColorCont').css('display', 'none');
+		$('#bGameOverContPry').css('display', 'block');  
+		clearBGameBallUpdate(); 
+		bBgroundSound.pause(); 
+		bGameOverSound.play();
+		stopGameTimer();
+		//bgameOn = false;
+	}
 }
 
 $(function(){  					//Restart Baloon Game
@@ -664,7 +707,7 @@ function startBaloonGame(){
 		var scaleSize = randomListColorsFunction(scaleList1);
 		$('#'+addBalls).css('transform', 'scale('+scaleSize+')'); //Resize Ball
 		$('#'+addBalls).css('left', pos+'vw'); //Change position
-		$('#'+addBalls).css('color', addBalls); //Set tail color to baloon color
+		//$('#'+addBalls).css('color', addBalls); //Set tail color to baloon color
 		$('#'+addBalls).css('display', 'block');		//Display the baloon
 		hiddenList.splice(hiddenList.indexOf(addBalls), 1);		//Delete the ball from hiddenCol List
 	}
@@ -766,7 +809,7 @@ function releaseNewBal(){
 	//youWonBaloonGame();  //Check if you win.
 	//changeBalPosition();
 	//var indexOfBallToAdd = hiddenCol.indexOf(newBallToAdd); // Get the index of the ball
-	if(ballsExhaustedStatus()){youWonBaloonGame();}else{
+	if(ballsExhaustedStatus()){youWonBaloonGame2();}else{
 		if(hiddenList.length != 0 ){  //Stop release when hiddenList List is empty
 			//for(var i = 0; i <= noOfBalsToRelease ; i++){
 			var newBallToAdd = randomListColorsFunction(hiddenList); //Select a new ball
@@ -776,7 +819,7 @@ function releaseNewBal(){
 			var pos = randomNumbers(0, 92);
 			$('#'+newBallToAdd).css('transform', 'scale('+scaleSize+') translateY(0) rotate(-4deg)'); //Resize Ball
 			$('#'+newBallToAdd).css('left', pos+'vw'); //Change position
-			$('#'+newBallToAdd).css('color', newBallToAdd); //Set tail color to baloon color
+			//$('#'+newBallToAdd).css('color', newBallToAdd); //Set tail color to baloon color
 			viewList.push(newBallToAdd); //Add it to viewList List
 			$('#'+newBallToAdd).css('display', 'block'); //Change display to block
 			$('#gameTwoScoreBoard').css('background-color', newBallToAdd);
@@ -806,11 +849,11 @@ $(function(){
 	});
 });-*/
 
-$(function(){  				
+/*$(function(){  				
 	$('#gameTwoScoreBoard').click(function(){
 	alert(viewList+'. Length- '+viewList.length +'\n .HiddenList: '+hiddenList+'. Length- '+hiddenList.length);
 	});
-});
+});*/
 
 /*
 function selBall(ballID){

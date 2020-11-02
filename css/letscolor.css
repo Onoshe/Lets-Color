@@ -477,6 +477,7 @@ font-weight: bolder;
     font-size:20px;
     box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);
 }
+/*
 .baloons:before {
   content:"▲";
   font-size:14px;
@@ -486,7 +487,7 @@ font-weight: bolder;
   position:fixed;
   bottom:-12px;
   z-index:-100;
-}
+}*/
 
 #aqua{
     background-color: aqua; /*red*/
@@ -726,6 +727,7 @@ font-weight: bolder;
 #pg5HeaderBarLeftBtn {background-color: dodgerblue; font-size: 20px;}
 #gameSelectPg5{padding-left: 10px; font-weight: bolder; font-size: 18px; color: blue;}
 
+#game3CountBoard, #game3ScoreBoard{text-align: left; padding-left: 0px;}
 #game3Score{color: black; border: 2px solid grey; border-radius: 5px; 
     font-weight: bolder; font-size: 16px; padding: 0; padding-left: 2px; padding-right: 2px;
   display: flex; float:right; width:auto; background-color: white;}
@@ -779,9 +781,24 @@ font-weight: bolder;
 #game3OptnsBtnsCont5 > button {margin: 10px; padding-left: 5px; font-weight: bolder; font-size: 12px;}
 
 #game3BtnsCont1{display: flex; align-items: center;}
-#game3StartBtn {margin-right: 2px;}
-#game3LifeLineBtn {margin-left: 2px; border: 2px solid lime; text-shadow: none;}
+#game3StartBtn {margin-right: 2px; border: 3px solid dodgerblue;}
+#game3LifeLineBtn {margin-left: 2px; border: 3px solid lime; text-shadow: none;}
 
+#game3Over{position: fixed; width: 60%; height: auto; background-color: transparent; border: hidden;
+          z-index: 20; left: calc(20%); top: calc(30%); padding: 8px; color: black; font-weight: bolder;}
+#game3OverCall{font-size: 35px; font-weight: bolder; color: red; text-shadow: 3px 3px grey; 
+          font-family: cursive; animation: dim 0.5s infinite alternate;}
+#game3OverCorrectCount, #game3OverQues{color: red}
+
+#game3RuleBtn{background-color: dodgerblue;}
+#game3Rule{position: fixed; width: 60%; height: auto; background-color: khaki;
+          z-index: 2; left: calc(20%); top: calc(20%); padding: 8px; border: 3px inset grey;
+          box-shadow:inset 4px 4px grey;}
+#game3Rule0 {text-align: center; font-weight: bolder;}          
+#game3Rule1, #game3Rule2, #game3Rule3 {width: auto; text-shadow: none; text-align: left;}
+#game3RuleOkDiv {width: 100%; align-items: center; display: flex; justify-content: center;}  
+#game3RuleOk {background-color: coral; width: 40%; justify-content: center; text-align: center; 
+    font-weight: bolder; color: white;}  
 
 .bino {
   position:fixed;
@@ -895,7 +912,7 @@ font-weight: bolder;
     box-shadow: 10px 10px 10px grey;
 }
 
-
+#page3TestDisplay{color: black; border: 3px solid grey; background-color: white;}
 
 
 /* ----- Page3 Color Mix -----*/

@@ -67,7 +67,7 @@
 	<a href="#page5" class="ui-btn" class="homeNav" id="gameThreeBtnHome">Game: What Color is this?</a>
 	<a href="#page2" class="ui-btn" class="homeNav" id="game1BtnHome" onclick="goToGameOne();">Game: Name the Color</a>
 	<a href="#page4" class="ui-btn" class="homeNav" id="game2BtnHome">Game: Burst the Baloon</a>
-	<a href="#page3" class="ui-btn" class="homeNav" id="game3BtnHome">Lets Mix the Color</a>
+	<a href="#page3" class="ui-btn" class="homeNav" id="game3BtnHome">Practice Colors</a>
 
 <div style="display: none;">
 	<div ></div>
@@ -169,7 +169,7 @@
 <!-- Start of Page3 -->
 <div data-role="page" id="page3">
 	<div data-role="header" data-position="fixed" id="pg2HeaderBar">
-		<div id="pg2HeaderBarDiv"><span>M</span><span>I</span><span>X</span><span>S</span><span> P</span><span>L</span><span>A</span><span>Y </span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span><span>S</span></div>
+		<div id="pg2HeaderBarDiv"><span>P</span><span>R</span><span>A</span><span>C</span><span>T</span><span>I</span><span>C</span><span>E </span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span><span>S</span></div>
 		<a href="#home" class="ui-btn ui-icon-arrow-l ui-btn-icon-notext" id="pg2HeaderBarLeftBtn">arrow-l</a>
 	</div><!-- /header -->
 	<div id="nameTheColorDiv"><div id="nameTheColorPg3">
@@ -208,7 +208,11 @@
   		<div class="bouncingBalls">B</div>
   		<div class="bouncingBalls">C</div>
   	</div>
-  	<!--<button id="pg3Btn" style="display: block;">PressMe</button>-->
+  	<div id="page3TestDiv">
+  		<p id="page3TestDisplay" style="visibility: hidden">Color Name: Coral</p>
+  		<button id="page3TestBtn1">Color ++</button>
+  		<button id="page3TestBtn2">Color --</button>
+  	</div>
 </div><!-- /content -->
 	 <!-- <div data-enhance='false'>JQM will not enhance on these blocks of code
  		<div>Default Slider value: <span id="demo"></span></div>
@@ -359,36 +363,52 @@
         <div class="bino" id="bin8"></div>
 	</div>
 
-	<button id="game3Score" style="display: block;">Score: <span id="game3ScoreSp">00</span><br><span id="game3ScoreSp2">Life: </span><span id="game3ScoreSp21">3</span>
+	<button id="game3Score" style="display: block;"><span id="game3CountBoard">Counts: </span><span id="game3Counts">0</span><br><span id="game3ScoreBoard">Score: </span></span><span id="game3ScoreSp">00</span><br><span id="game3ScoreSp2">Life: </span><span id="game3ScoreSp21">3</span>
 	</button>	
 	<br><br><br><br><hr>
+	<div id="game3Over" style="display: none";>
+		<div id="game3OverCall" >GAME OVER!!!</div><br>
+		<div id="game3OverCountCont">You scored <span id="game3OverCorrectCount">1</span><span> out of  </span><span id="game3OverQues">2</span> questions</div>
+	</div>
+	<div id="game3Rule" style="display: none;">
+		<div id="game3Rule0">Game Rule:</div>
+		<br>
+		<div id="game3Rule1">1. You have a maximum of 3 lives per game. This can be inceased at every 10th score.</div>
+		<div id="game3Rule2">2. Game life is reduced by 1 when used.</div>
+		<div id="game3Rule3">3. Game is automatically over when game life is below 0. </div>
+		<br>
+		<div id="game3RuleOkDiv"><div id="game3RuleOk">OK</div></div>
+	</div>
 	<div id="game3OptnsBtnsCont">
-		<div id="game3OptnsBtnsCont1">	
-			<button id="game3Optn1" onclick="game3BallSelect(this.id)">Color1</button>
-			<button id="game3Optn2" onclick="game3BallSelect(this.id)">Color2</button>
-		</div>
-		<div id="game3OptnsBtnsCont2">	
-			<button id="game3Optn3" onclick="game3BallSelect(this.id)">Color3</button>
-			<button id="game3Optn4" onclick="game3BallSelect(this.id)">Color4</button>
-		</div>
-		<div id="game3OptnsBtnsCont3">	
-			<button id="game3Optn5" onclick="game3BallSelect(this.id)">Color5</button>
-			<button id="game3Optn6" onclick="game3BallSelect(this.id)">Color6</button>
-		</div>
-		<div id="game3OptnsBtnsCont4">	
-			<button id="game3Optn7" onclick="game3BallSelect(this.id)">Color7</button>
-			<button id="game3Optn8" onclick="game3BallSelect(this.id)">Color8</button>
-		</div>
-		<div id="game3OptnsBtnsCont5">	
-			<button id="game3Optn9" onclick="game3BallSelect(this.id)">Color9</button>
-			<button id="game3Optn10" onclick="game3BallSelect(this.id)">Color10</button>
+		<div id="game3OptnsBtnsOnlyCont">
+			<div id="game3OptnsBtnsCont1">	
+				<button id="game3Optn1" onclick="game3BallSelect(this.id)">Color1</button>
+				<button id="game3Optn2" onclick="game3BallSelect(this.id)">Color2</button>
+			</div>
+			<div id="game3OptnsBtnsCont2">	
+				<button id="game3Optn3" onclick="game3BallSelect(this.id)">Color3</button>
+				<button id="game3Optn4" onclick="game3BallSelect(this.id)">Color4</button>
+			</div>
+			<div id="game3OptnsBtnsCont3">	
+				<button id="game3Optn5" onclick="game3BallSelect(this.id)">Color5</button>
+				<button id="game3Optn6" onclick="game3BallSelect(this.id)">Color6</button>
+			</div>
+			<div id="game3OptnsBtnsCont4">	
+				<button id="game3Optn7" onclick="game3BallSelect(this.id)">Color7</button>
+				<button id="game3Optn8" onclick="game3BallSelect(this.id)">Color8</button>
+			</div>
+			<div id="game3OptnsBtnsCont5">	
+				<button id="game3Optn9" onclick="game3BallSelect(this.id)">Color9</button>
+				<button id="game3Optn10" onclick="game3BallSelect(this.id)">Color10</button>
+			</div>
 		</div>
 		<div id="game3BtnsCont1">	
 			<button id="game3StartBtn">Restart</button>
 			<button id="game3LifeLineBtn">Life line</button>
 		</div>
+		<button id="game3RuleBtn">Game Rule</button>
 	</div>
-	<div id="wrongAnsCount"></div>
+	<div id="wrongAnsCount" style="display: none;"></div>
 </div><!-- /content -->
 	<!-- <div data-role="footer" data-position="fixed" id="pg2FooterBar">
 		<h4></h4>

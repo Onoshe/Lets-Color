@@ -1,16 +1,23 @@
 var allBallsColors= ["IndianRed",	"LightCoral",	"Salmon",	"DarkSalmon",	"LightSalmon",	"Crimson",	"Red",	"FireBrick",	"DarkRed",	"Pink",	"LightPink",	"HotPink",	"DeepPink",	"MediumVioletRed",	"PaleVioletRed",	"Coral",	"Tomato",	"OrangeRed",	"DarkOrange",	"Orange",	"Gold",	"Yellow",	"LightYellow",	"LemonChiffon",	"LightGoldenrodYellow",	"PapayaWhip",	"Moccasin",	"PeachPuff",	"PaleGoldenrod",	"Khaki",	"DarkKhaki",	"Lavender",	"Thistle",	"Plum",	"Violet",	"Orchid",	"Fuchsia",	"Magenta",	"MediumOrchid",	"MediumPurple",	"BlueViolet",	"DarkViolet",	"DarkOrchid",	"DarkMagenta",	"Purple",	"RebeccaPurple",	"Indigo",	"MediumSlateBlue",	"SlateBlue",	"DarkSlateBlue",	"GreenYellow",	"Chartreuse",	"LawnGreen",	"Lime",	"LimeGreen",	"PaleGreen",	"LightGreen",	"MediumSpringGreen",	"SpringGreen",	"MediumSeaGreen",	"SeaGreen",	"ForestGreen",	"Green",	"DarkGreen",	"YellowGreen",	"OliveDrab",	"Olive",	"DarkOliveGreen",	"MediumAquamarine",	"DarkSeaGreen",	"LightSeaGreen",	"DarkCyan",	"Teal",	"Aqua",	"Cyan",	"LightCyan",	"PaleTurquoise",	"Aquamarine",	"Turquoise",	"MediumTurquoise",	"DarkTurquoise",	"CadetBlue",	"SteelBlue",	"LightSteelBlue",	"PowderBlue",	"LightBlue",	"SkyBlue",	"LightSkyBlue",	"DeepSkyBlue",	"DodgerBlue",	"CornflowerBlue",	"RoyalBlue",	"Blue",	"MediumBlue",	"DarkBlue",	"Navy",	"MidnightBlue",	"Cornsilk",	"BlanchedAlmond",	"Bisque",	"NavajoWhite",	"Wheat",	"BurlyWood",	"Tan",	"RosyBrown",	"SandyBrown",	"Goldenrod",	"DarkGoldenrod",	"Peru",	"Chocolate",	"SaddleBrown",	"Sienna",	"Brown",	"Maroon",	"White",	"Snow",	"Honeydew",	"MintCream",	"Azure",	"AliceBlue",	"GhostWhite",	"WhiteSmoke",	"Seashell",	"Beige",	"OldLace",	"FloralWhite",	"Ivory",	"AntiqueWhite",	"Linen",	"LavenderBlush",	"MistyRose",	"Gainsboro",	"LightGray",	"LightGrey",	"Silver",	"DarkGray",	"DarkGrey",	"Gray",	"Grey",	"DimGray",	"DimGrey",	"LightSlateGray",	"LightSlateGrey",	"SlateGray",	"SlateGrey",	"DarkSlateGray",	"DarkSlateGrey", "Black"];
 
+var game3IsOn = true;
 $(function(){  							//Start Game 3 Game
-	$('#game3StartBtn, #gameThreeBtnHome').click(function(){
+	$('#game3StartBtn, #gameThreeBtnHome').on('click', function(){
+	$('#game3OptnsBtnsOnlyCont').css('visibility', 'visible');
+	$('#game3Over').css('display', 'none');
+
+	$('#game3OverQues').text('00'); //Reset questions count
 	$('#game3ScoreSp').text('00'); // Reset Score
 	$('#game3ScoreSp21').text(3); //Reset Life
+	$('#game3Counts').text('00');
 	
 	$('#fallingbinos').css('display', 'block'); 
 	$('#game3StartBtn').text('Restart');
 
+	$('#game3OptnsBtnsCont').css('visibility', 'visible');
 	startGameOneQuestion();
 	playBackgroundSoundGame3();
-	 
+	game3IsOn = true; 
 	});
 });
 
@@ -22,32 +29,41 @@ $(function(){  							//Exit Game with Home Button
 });
 
 $(function(){  							
-	$('#game3LifeLineBtn').click(function(){ 		//LifeLine- Game 3
-	var game3Life = $('#game3ScoreSp21').text();
-	game3Life = parseInt(game3Life);
-	if(game3Life <= 0){
-		alert('You have no life remaining!')
-	}
-	if(game3Life > 0){
-		if(confirm('You want to use your life line?')){
-			var balcolor = $('#bin1').css('background-color');
-			game3Life -= 1;
-			$('#game3ScoreSp21').text(game3Life);
-
-			$('#nameTheColorGame3').css('color', balcolor);
-			$('#nameTheColorGame3').text('The color is- "'+ballColor+'"');
-			setTimeout(startGameOneQuestion, 3000);
+	$('#game3LifeLineBtn').on('click', function(){ 		//LifeLine- Game 3
+	if(game3IsOn == true){
+		var game3Life = $('#game3ScoreSp21').text();
+		game3Life = parseInt(game3Life);
+		if(game3Life <= 0){
+			alert('You have no life remaining!')
+		}
+		if(game3Life > 0){
+			if(confirm('You want to use your life line?')){
+				var balcolor = $('#bin1').css('background-color');
+				game3Life -= 1;
+				$('#game3ScoreSp21').text(game3Life);
+				/*$('#nameTheColorGame3').css('color', balcolor);
+				$('#nameTheColorGame3').text('The color is- "'+ballColor+'"');
+				$('#game3Optn'+correctBtn).css('background-color', 'lime');
+				setTimeout(startGameOneQuestion, 3000);
+				wrongAnsCount = 0;*/
+				lifeLineCall();
+			}
 		}
 	}
-	 
 	});
 });
 
 var ballColor;
+var correctBtn;
+var quesCount = 0;
 function startGameOneQuestion(){
 	var allBallsColor= ["IndianRed",	"LightCoral",	"Salmon",	"DarkSalmon",	"LightSalmon",	"Crimson",	"Red",	"FireBrick",	"DarkRed",	"Pink",	"LightPink",	"HotPink",	"DeepPink",	"MediumVioletRed",	"PaleVioletRed",	"Coral",	"Tomato",	"OrangeRed",	"DarkOrange",	"Orange",	"Gold",	"Yellow",	"LightYellow",	"LemonChiffon",	"LightGoldenrodYellow",	"PapayaWhip",	"Moccasin",	"PeachPuff",	"PaleGoldenrod",	"Khaki",	"DarkKhaki",	"Lavender",	"Thistle",	"Plum",	"Violet",	"Orchid",	"Fuchsia",	"Magenta",	"MediumOrchid",	"MediumPurple",	"BlueViolet",	"DarkViolet",	"DarkOrchid",	"DarkMagenta",	"Purple",	"RebeccaPurple",	"Indigo",	"MediumSlateBlue",	"SlateBlue",	"DarkSlateBlue",	"GreenYellow",	"Chartreuse",	"LawnGreen",	"Lime",	"LimeGreen",	"PaleGreen",	"LightGreen",	"MediumSpringGreen",	"SpringGreen",	"MediumSeaGreen",	"SeaGreen",	"ForestGreen",	"Green",	"DarkGreen",	"YellowGreen",	"OliveDrab",	"Olive",	"DarkOliveGreen",	"MediumAquamarine",	"DarkSeaGreen",	"LightSeaGreen",	"DarkCyan",	"Teal",	"Aqua",	"Cyan",	"LightCyan",	"PaleTurquoise",	"Aquamarine",	"Turquoise",	"MediumTurquoise",	"DarkTurquoise",	"CadetBlue",	"SteelBlue",	"LightSteelBlue",	"PowderBlue",	"LightBlue",	"SkyBlue",	"LightSkyBlue",	"DeepSkyBlue",	"DodgerBlue",	"CornflowerBlue",	"RoyalBlue",	"Blue",	"MediumBlue",	"DarkBlue",	"Navy",	"MidnightBlue",	"Cornsilk",	"BlanchedAlmond",	"Bisque",	"NavajoWhite",	"Wheat",	"BurlyWood",	"Tan",	"RosyBrown",	"SandyBrown",	"Goldenrod",	"DarkGoldenrod",	"Peru",	"Chocolate",	"SaddleBrown",	"Sienna",	"Brown",	"Maroon",	"White",	"Snow",	"Honeydew",	"MintCream",	"Azure",	"AliceBlue",	"GhostWhite",	"WhiteSmoke",	"Seashell",	"Beige",	"OldLace",	"FloralWhite",	"Ivory",	"AntiqueWhite",	"Linen",	"LavenderBlush",	"MistyRose",	"Gainsboro",	"LightGray",	"LightGrey",	"Silver",	"DarkGray",	"DarkGrey",	"Gray",	"Grey",	"DimGray",	"DimGrey",	"LightSlateGray",	"LightSlateGrey",	"SlateGray",	"SlateGrey",	"DarkSlateGray",	"DarkSlateGrey", "Black"];
 	var btnsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	ballColor = randomListColorsFunction(allBallsColor); //Select a color from the list
+
+	for(var i = 0; i <= 10; i++){   //First reset all btns backgrd color to normal, ie remove the lifeline backgrd 
+		$('#game3Optn'+i).css('background-color', '');
+	}
 
 	$('#nameTheColorGame3').css('color', ballColor); //Ask for this color
 	$('#nameTheColorGame3').text('What Color is this?');
@@ -56,6 +72,7 @@ function startGameOneQuestion(){
 		$('#bin'+i).css('background-color', ballColor);
 	}
 	var answerBtn = randomNumbers(1, 10);   //Place the answer in one of the buttons
+	correctBtn = answerBtn;  //Hold the correct in a variable.
 	$('#game3Optn'+answerBtn).text(ballColor);
 	btnsList.splice(btnsList.indexOf(answerBtn), 1); //Remove the answer button from the List
 	allBallsColor.splice(allBallsColor.indexOf(ballColor), 1); //Remove selected color from list
@@ -122,7 +139,9 @@ function startGameOneQuestion(){
 	//Reset the colors back to original list
 	allBallsColor= ["IndianRed",	"LightCoral",	"Salmon",	"DarkSalmon",	"LightSalmon",	"Crimson",	"Red",	"FireBrick",	"DarkRed",	"Pink",	"LightPink",	"HotPink",	"DeepPink",	"MediumVioletRed",	"PaleVioletRed",	"Coral",	"Tomato",	"OrangeRed",	"DarkOrange",	"Orange",	"Gold",	"Yellow",	"LightYellow",	"LemonChiffon",	"LightGoldenrodYellow",	"PapayaWhip",	"Moccasin",	"PeachPuff",	"PaleGoldenrod",	"Khaki",	"DarkKhaki",	"Lavender",	"Thistle",	"Plum",	"Violet",	"Orchid",	"Fuchsia",	"Magenta",	"MediumOrchid",	"MediumPurple",	"BlueViolet",	"DarkViolet",	"DarkOrchid",	"DarkMagenta",	"Purple",	"RebeccaPurple",	"Indigo",	"MediumSlateBlue",	"SlateBlue",	"DarkSlateBlue",	"GreenYellow",	"Chartreuse",	"LawnGreen",	"Lime",	"LimeGreen",	"PaleGreen",	"LightGreen",	"MediumSpringGreen",	"SpringGreen",	"MediumSeaGreen",	"SeaGreen",	"ForestGreen",	"Green",	"DarkGreen",	"YellowGreen",	"OliveDrab",	"Olive",	"DarkOliveGreen",	"MediumAquamarine",	"DarkSeaGreen",	"LightSeaGreen",	"DarkCyan",	"Teal",	"Aqua",	"Cyan",	"LightCyan",	"PaleTurquoise",	"Aquamarine",	"Turquoise",	"MediumTurquoise",	"DarkTurquoise",	"CadetBlue",	"SteelBlue",	"LightSteelBlue",	"PowderBlue",	"LightBlue",	"SkyBlue",	"LightSkyBlue",	"DeepSkyBlue",	"DodgerBlue",	"CornflowerBlue",	"RoyalBlue",	"Blue",	"MediumBlue",	"DarkBlue",	"Navy",	"MidnightBlue",	"Cornsilk",	"BlanchedAlmond",	"Bisque",	"NavajoWhite",	"Wheat",	"BurlyWood",	"Tan",	"RosyBrown",	"SandyBrown",	"Goldenrod",	"DarkGoldenrod",	"Peru",	"Chocolate",	"SaddleBrown",	"Sienna",	"Brown",	"Maroon",	"White",	"Snow",	"Honeydew",	"MintCream",	"Azure",	"AliceBlue",	"GhostWhite",	"WhiteSmoke",	"Seashell",	"Beige",	"OldLace",	"FloralWhite",	"Ivory",	"AntiqueWhite",	"Linen",	"LavenderBlush",	"MistyRose",	"Gainsboro",	"LightGray",	"LightGrey",	"Silver",	"DarkGray",	"DarkGrey",	"Gray",	"Grey",	"DimGray",	"DimGrey",	"LightSlateGray",	"LightSlateGrey",	"SlateGray",	"SlateGrey",	"DarkSlateGray",	"DarkSlateGrey", "Black"];
 	btnsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-	/*$('#gameOneScoreSp').text('00');
+	quesCount += 1; 
+	$('#game3Counts').text(quesCount);
+	/*
 	if(gameCat == 'Easy'){colorList = popularColors; $('#gameOneScoreSp21').text(5);}
 	if(gameCat == 'Hard'){colorList = allColors; $('#gameOneScoreSp21').text(10);}
 	playGameOne();
@@ -148,13 +167,20 @@ function game3BallSelect(ballID){
 	var life = $('#game3ScoreSp21').text();
 	score = parseInt(score);
 	life = parseInt(life);
+	wrongSound.currentTime = 0;  //Stop sound on another click
+	correctSound.currentTime = 0;
+	for(var i = 0; i <= 10; i++){   //First reset all btns backgrd color to normal
+		$('#game3Optn'+i).css('background-color', '');
+	}
 	if(colorQuestion == ballContent){
 		$('#nameTheColorGame3').text('Correct! "'+colorQuestion+'" is the color');
 		$('#nameTheColorGame3').css('color', colorQuestion);
 		playCorrectSound();
+		$('#'+ballID).css('background-color', 'lime');
 		correctAnswer = true; 
 		wrongAnsCount = 0;	//Reset to 0
 	}else{
+		$('#'+ballID).css('background-color', 'coral');
 		playWrongSound();
 		$('#nameTheColorGame3').text('Wrong Answer');
 		setTimeout(function(){$('#nameTheColorGame3').text('What Color is this?')}, 500);
@@ -162,8 +188,12 @@ function game3BallSelect(ballID){
 		wrongAnsCount += 1;
 		if(wrongAnsCount %3 == 0){
 				$('#wrongAnsCount').text(wrongAnsCount);
-				$('#game3ScoreSp21').text(life-1);
+				setTimeout($('#game3ScoreSp21').text(life-1),1500);
+				setTimeout(startGameOneQuestion, 1500);
 		}
+	if(parseInt($('#game3ScoreSp21').text()) == -1){
+		game3Over();
+	}	
 	}
 	if(correctAnswer){
 		//setTimeout(function(){$('#nameTheColorGame3').text('What Color is this?')}, 2000);
@@ -177,3 +207,66 @@ function game3BallSelect(ballID){
 		correctAnswer = false;
 	}
 }
+
+function game3Over(){				//Game Over
+	var score = $('#game3ScoreSp').text();
+	var life = $('#game3ScoreSp21').text();
+	$('#game3OptnsBtnsOnlyCont').css('visibility', 'hidden');
+	$('#game3Over').css('display', 'block');
+	$('#game3OverCorrectCount').text(score);
+	$('#game3OverQues').text(quesCount);
+	wrongSound.currentTime = 0;
+	bBgroundSoundGame3.pause();
+	bBgroundSoundGame3.currentTime = 0;
+	playbGameOverSound();
+	$('#game3ScoreSp21').text(0);
+	//quesCount = 0; //Reset this
+	game3IsOn = false;
+}
+
+$(function(){					//Game Rule Container
+		$('#game3RuleBtn').click(function(){
+	if(game3IsOn){
+		var display = $('#game3Rule').css('display'); 
+		if(display == 'none'){
+			$("#game3Rule").fadeIn(1000);
+			$('#game3Rule').css('display', 'block');
+			setTimeout(autoRemoveRuleCont, 10000);
+			$('#game3RuleBtn').text('Hide Game Rule');
+		}
+		if(display == 'block'){
+			$("#game3Rule").fadeOut(700);
+			$('#game3RuleBtn').text('Game Rule');
+		}
+	}
+	});
+});
+
+function autoRemoveRuleCont(){			//Auto Hide Game Rule
+	var display = $('#game3Rule').css('display'); 
+	if(display == 'block'){ //Auto fadeOut after 4sec
+		//$("#exitCont").delay(3000).fadeOut(1000);
+		$("#game3Rule").fadeOut(1000);
+		$('#game3RuleBtn').text('Game Rule');
+	}
+}
+
+$(function(){  							//Game Rule Container -OK button
+	$('#game3RuleOk').click(function(){
+	$("#game3Rule").fadeOut(700);
+	$('#game3Rule').css('display', 'none');
+	$('#game3RuleBtn').text('Game Rule');
+	});
+});
+
+function lifeLineCall(){
+	var btnsList2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	btnsList2.splice(btnsList2.indexOf(correctBtn), 1); //Remove the answer button from the List
+
+	for(var i = 1; i <= 7; i++){   // 7 options to be removed
+		var wrongBtn = randomListColorsFunction(btnsList2); //Select a btn from the remaining options
+		$('#game3Optn'+wrongBtn).text('--');
+		btnsList2.splice(btnsList2.indexOf(wrongBtn), 1); //Remove the selected btn from the list
+	}
+}
+
