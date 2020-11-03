@@ -9,7 +9,9 @@ $(function(){  							//Start Game 3 Game
 	$('#game3OverQues').text('00'); //Reset questions count
 	$('#game3ScoreSp').text('00'); // Reset Score
 	$('#game3ScoreSp21').text(3); //Reset Life
-	$('#game3Counts').text('00');
+
+	quesCount = 0;
+	$('#game3Counts').text(quesCount);
 	
 	$('#fallingbinos').css('display', 'block'); 
 	$('#game3StartBtn').text('Restart');
@@ -27,6 +29,7 @@ $(function(){  							//Exit Game with Home Button
 	bBgroundSound.currentTime = 0;
 	});
 });
+
 
 $(function(){  							
 	$('#game3LifeLineBtn').on('click', function(){ 		//LifeLine- Game 3
@@ -146,6 +149,7 @@ function startGameOneQuestion(){
 	if(gameCat == 'Hard'){colorList = allColors; $('#gameOneScoreSp21').text(10);}
 	playGameOne();
 	bgroundSound.pause();*/
+	$('#wrongAnsCount').text(ballColor);
 }
 function scoreGame3Life(){
 	var score = $('#game3ScoreSp').text();
@@ -169,9 +173,9 @@ function game3BallSelect(ballID){
 	life = parseInt(life);
 	wrongSound.currentTime = 0;  //Stop sound on another click
 	correctSound.currentTime = 0;
-	for(var i = 0; i <= 10; i++){   //First reset all btns backgrd color to normal
-		$('#game3Optn'+i).css('background-color', '');
-	}
+	//for(var i = 0; i <= 10; i++){   //First reset all btns backgrd color to normal
+	//	$('#game3Optn'+i).css('background-color', '');
+	//}
 	if(colorQuestion == ballContent){
 		$('#nameTheColorGame3').text('Correct! "'+colorQuestion+'" is the color');
 		$('#nameTheColorGame3').css('color', colorQuestion);
@@ -186,10 +190,15 @@ function game3BallSelect(ballID){
 		setTimeout(function(){$('#nameTheColorGame3').text('What Color is this?')}, 500);
 
 		wrongAnsCount += 1;
-		if(wrongAnsCount %3 == 0){
-				$('#wrongAnsCount').text(wrongAnsCount);
-				setTimeout($('#game3ScoreSp21').text(life-1),1500);
-				setTimeout(startGameOneQuestion, 1500);
+		if(wrongAnsCount %3 == 0 && !game3LifeLine){
+			$('#wrongAnsCount').text(wrongAnsCount);
+			setTimeout($('#game3ScoreSp21').text(life-1),1500);
+			setTimeout(startGameOneQuestion, 1500);
+		}
+		if(game3LifeLine){
+			setTimeout(startGameOneQuestion, 1500);
+			wrongAnsCount = 0;
+			game3LifeLine = false;
 		}
 	if(parseInt($('#game3ScoreSp21').text()) == -1){
 		game3Over();
@@ -200,7 +209,7 @@ function game3BallSelect(ballID){
 		$('#game3ScoreSp').text(score+1);
 		setTimeout(startGameOneQuestion, 2000);
 		if(score != 0){
-			if(score%9 == 0){
+			if((score+1)%5 == 0){
 				$('#game3ScoreSp21').text(life+1);
 			}	
 		}
@@ -259,7 +268,9 @@ $(function(){  							//Game Rule Container -OK button
 	});
 });
 
+var game3LifeLine = false;
 function lifeLineCall(){
+	game3LifeLine = true;
 	var btnsList2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	btnsList2.splice(btnsList2.indexOf(correctBtn), 1); //Remove the answer button from the List
 

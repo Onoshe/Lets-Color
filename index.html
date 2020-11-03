@@ -66,7 +66,7 @@
 	<br>
 	<a href="#page5" class="ui-btn" class="homeNav" id="gameThreeBtnHome">Game: What Color is this?</a>
 	<a href="#page2" class="ui-btn" class="homeNav" id="game1BtnHome" onclick="goToGameOne();">Game: Name the Color</a>
-	<a href="#page4" class="ui-btn" class="homeNav" id="game2BtnHome">Game: Burst the Baloon</a>
+	<a href="res/www/games.html" rel="external" data-prefetch class="ui-btn" class="homeNav" id="game2BtnHome">Game: Burst the Baloon</a>
 	<a href="#page3" class="ui-btn" class="homeNav" id="game3BtnHome">Practice Colors</a>
 
 <div style="display: none;">
@@ -226,14 +226,13 @@
 </div><!-- /footer -->
 </div><!-- /page -->
 
-<!-- Start of Page4 -->
-<div data-role="page" id="page4">
+<!-- Start of Page4
+<div data-role="page" id="page44">
 	<div data-role="header" data-position="fixed" id="pg2HeaderBar">
 		<div id="pg2HeaderBarDiv"><span>L</span><span>E</span><span>T'</span><span>S</span><span> P</span><span>L</span><span>A</span><span>Y </span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span><span>S</span></div>
 		<a href="#home" class="ui-btn ui-icon-home ui-btn-icon-notext" id="pg4HeaderBarLeftBtn">home</a>
-		<!--<a href="#" class="ui-btn ui-btn-inline ui-btn-icon-right" id="pg4HeaderBarRightBtn">&#9193;</a>-->
-	</div><!-- /header -->
-	<!--<div id="displayTest1" style="background-color: blue; font-size: 16px; font-weight: bolder; color: white;">BallSize</div>-->
+		
+	</div>
 <div role="main" class="ui-content" id="mainPg4" >
 	<div id="baloonsCont" style="display: block;">
 		<div class="baloons" id="aqua" onclick="selBall(this.id)" style="display: none;"></div>
@@ -286,22 +285,8 @@
 			<div id="colorRotate6">T</div>
 			<div id="colorRotate7">H</div>
 			<div id="colorRotate8">E</div>
-			<!--<div id="colorRotate9">B</div>
-			<div id="colorRotate10">A</div>
-			<div id="colorRotate11">L</div>
-			<div id="colorRotate12">O</div>
-			<div id="colorRotate13">O</div>
-			<div id="colorRotate14">N</div>-->
 		</div>
 		<div id="colorRotate_burstBaloon">
-			<!--<div id="colorRotate1">B</div>
-			<div id="colorRotate2">U</div>
-			<div id="colorRotate3">R</div>
-			<div id="colorRotate4">S</div>
-			<div id="colorRotate5">T</div>
-			<div id="colorRotate6">T</div>
-			<div id="colorRotate7">H</div>
-			<div id="colorRotate8">E</div>-->
 			<div id="colorRotate9">B</div>
 			<div id="colorRotate10">A</div>
 			<div id="colorRotate11">L</div>
@@ -324,11 +309,7 @@
 		<p id="colorCheckDisplay">Randoms</p>
 		<button id="colorCheckBtn" onclick="randTest()">PresMe</button>
 	</div>
-</div><!-- /content -->
-	<!--<div id="bGameClientSec" style="display: block;">	
-		<div id="updateBalInterval" style="visibility: hidden;">5000</div>
-	</div>-->
-	<!--<p id="testNoRand" style="color: red; font-size: 16px">Number</p>-->
+</div>
 	<div id="bGameBtnCont" style="display: none;" >
 		<div id="exitCont" style="display: none;">
 			<div id="pulseBGameBtn">Restart</div>
@@ -339,7 +320,7 @@
 	<div data-role="footer" data-position="fixed" id="pg4FooterBar" style="display: none;">
 		
 	</div>
-</div><!-- /page -->
+</div>	-- /page -->
 
 <!-- Start of Page5 -->
 <div data-role="page" id="page5">
@@ -373,8 +354,8 @@
 	<div id="game3Rule" style="display: none;">
 		<div id="game3Rule0">Game Rule:</div>
 		<br>
-		<div id="game3Rule1">1. You have a maximum of 3 lives per game. This can be inceased at every 10th score.</div>
-		<div id="game3Rule2">2. Game life is reduced by 1 when used.</div>
+		<div id="game3Rule1">1. You have 3 lives at the start of the game. This can be inceased by 1 at every 5 questions answered correctly. </div>
+		<div id="game3Rule2">2. Game life is reduced by 1 when used and for every 3 wrong options for a question.</div>
 		<div id="game3Rule3">3. Game is automatically over when game life is below 0. </div>
 		<br>
 		<div id="game3RuleOkDiv"><div id="game3RuleOk">OK</div></div>
@@ -408,7 +389,7 @@
 		</div>
 		<button id="game3RuleBtn">Game Rule</button>
 	</div>
-	<div id="wrongAnsCount" style="display: none;"></div>
+	<div id="wrongAnsCount" style="display: block;"></div>
 </div><!-- /content -->
 	<!-- <div data-role="footer" data-position="fixed" id="pg2FooterBar">
 		<h4></h4>

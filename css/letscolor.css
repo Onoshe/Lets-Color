@@ -368,8 +368,8 @@ font-weight: bolder;
 }
 
 @media only screen and (max-width: 800px){
-    #colorRotate {transform: scale(1, 1);}
-    #colorRotate_burstBaloon{transform: scale(1, 1);}
+    /*#colorRotate {transform: scale(1, 1);}
+    #colorRotate_burstBaloon{transform: scale(1, 1);}*/
 }
 @media only screen and (max-width: 430px){
     #mainHome > div > span{         /*--- ColorScroll ----*/
@@ -378,9 +378,9 @@ font-weight: bolder;
     border-radius:10px;}
 }
 @media only screen and (max-width: 400px){
-    /*#colorScroll{transform: scale(0.7, 0.7);}*/
+    /*#colorScroll{transform: scale(0.7, 0.7);}
     #colorRotate {transform: scale(0.8, 0.8);}
-    #colorRotate_burstBaloon{transform: scale(0.8, 0.8);}
+    #colorRotate_burstBaloon{transform: scale(0.8, 0.8);}*/
     #gameTwoScoreBoard{transform: scale(0.8, 0.8);}
     #bGameOver{transform: scale(0.8, 0.8);}
     #pg2HeaderBarDiv > span{font-size: 14px;}
@@ -396,8 +396,8 @@ font-weight: bolder;
   #gameOneScore{font-size: 14px;}
    #gameOneScoreSp{font-size: 14px;}
    #gameOneEasy, #gameOneHard {font-size: 13px; padding: 7px; padding-left: 5px; padding-right: 5px;}
-   #colorRotate {transform: scale(0.6, 0.6);}
-    #colorRotate_burstBaloon{transform: scale(0.6, 0.6);}
+   /*#colorRotate {transform: scale(0.6, 0.6);}
+  #colorRotate_burstBaloon{transform: scale(0.6, 0.6);}*/
 }
 
 /* ----------Page 3 --------------*/

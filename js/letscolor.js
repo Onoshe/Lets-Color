@@ -65,7 +65,7 @@ $(function(){
 function setHeight_HomePage(){
 		var pos = $('#mainHome').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight*0.75)+'px';
+		var elementHeight = (deviceHeight*0.60)+'px';
 		$('#mainHome').css('height', elementHeight);
 }
 /* ------- Testing -------*/
@@ -203,13 +203,13 @@ $(function(){
 function setHeight_Page2(){
 		var pos = $('#mainPg2').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight*0.75) +'px';
+		var elementHeight = (deviceHeight*0.60) +'px';
 		$('#mainPg2').css('height', elementHeight);
 }
 function setHeight_Page3(){
 		var pos = $('#mainPg3').offset();
 		var topPos = pos.top;  
-		var elementHeight = (deviceHeight*0.75) +'px';
+		var elementHeight = (deviceHeight*0.60) +'px';
 		$('#mainPg3').css('height', elementHeight);
 }
 
@@ -290,11 +290,11 @@ var correctSoundSrc = 'res/gameSoundCorrect.mp3';
 var wrongSoundSrc = 'res/gameSoundWrong.mp3';
 
 //Baloon Game Sounds
-var bBgroundSoundSrc = 'res/baloonGameBgrdSound.mp3';
-var bBurstSoundSrc = 'res/baloonBurst.mp3';
-var bScratchSoundSrc = 'res/baloonScratch.mp3';
-var bGameOverSoundSrc = 'res/GameOverChariots.mp3';
-var bGameWonSrc = 'res/baloonGameWon.mp3';
+var bBgroundSoundSrc = '../baloonGameBgrdSound.mp3';
+var bBurstSoundSrc = '../baloonBurst.mp3';
+var bScratchSoundSrc = '../baloonScratch.mp3';
+var bGameOverSoundSrc = '../GameOverChariots.mp3';
+var bGameWonSrc = '../baloonGameWon.mp3';
 
 var bBgroundSound = new Audio(bBgroundSoundSrc);
 var bBurstSound = new Audio(bBurstSoundSrc);
