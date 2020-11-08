@@ -489,9 +489,13 @@ $(function(){ 	//HELP - Check the Answer
 /* -------- Baloon Game with Javascript  -------*/
 
 //--------- Game Reset/Exit Primary Btn --------
+var generateNewBalInterval = 4000;
+var CompletedL1 = false; var CompletedL2 = false; var CompletedL3 = false;
+var CompletedL4 = false; var CompletedL5 = false;
 $(function(){
 	$('#bGameBtn').click(function(){
-	var display = $('#exitCont').css('display'); 
+	var display = $('#exitCont').css('display');
+	if(CompletedL5 == true){$('#pulseBGameBtn').css('visibility', 'visible')}else{$('#pulseBGameBtn').css('visibility', 'hidden')} 
 	if(display == 'none'){
 		$("#exitCont").fadeIn(1000);
 		$('#exitCont').css('display', 'block');
@@ -522,22 +526,85 @@ function exitBalloonGame(){			//Stop Baloon Game FUnction
 	playbBgroundSound(false);
 	playbGameWonSound(false);
 	$('#pg4HeaderBarLeftBtn').css('display','block');
+	$('#startBallGame').css('visibility', 'visible'); // Easy Button
+	$('#startBallGameHard').css('visibility', 'visible'); // Hard Button
 	$('#startBallGameCont').css('display', 'block');
 	$('#colorRotate_burstBaloonCont').css('display', 'block'); 
 	$('#gameTwoScoreBoard').css('display', 'none');
 	$('#bGameBtnCont').css('display', 'none');
 	$('#burstColorCont').css('display', 'none');
+	
+	CompletedL1 = false; CompletedL2 = false; CompletedL3 = false;
+	CompletedL4 = false; CompletedL5 = false;
+	var openClass = 'ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom';
+	var openClass2 = 'ui-btn ui-btn-inline ui-icon-check ui-btn-icon-bottom';
+	$('#gameTwoNextLevel1').attr('class', openClass2);
+	$('#gameTwoNextLevel1').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel2').attr('class', openClass);
+	$('#gameTwoNextLevel2').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel3').attr('class', openClass);
+	$('#gameTwoNextLevel3').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel4').attr('class', openClass);
+	$('#gameTwoNextLevel4').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel5').attr('class', openClass);
+	$('#gameTwoNextLevel5').css('background-color', 'lightgray');
 }
 
 $(function(){  							//Exit Baloon Game. Attache Stop to a button
 	$('#exitBGameBtn').click(function(){
-	exitBalloonGame();
+		if(confirm('You want to exit game?')){
+			exitBalloonGame();
+		}
+	});
+});
+$(function(){  							//Game Level back
+	$('#pg4HeaderBarRightBtn').click(function(){
+		$('#gameTwoLevelGenCont').css('display', 'none'); //Levels container
+		$('#pg4HeaderBarRightBtn').css('display', 'none'); //Back button
+		$('#startBallGame').css('visibility', 'visible'); // Easy Button
+		$('#startBallGameHard').css('visibility', 'visible'); // Hard Button
+		$('#startBallGameCont').css('display', 'block'); // Easy & Hard Button Cont
+		$('#colorRotate_burstBaloonCont').css('display', 'block');
 	});
 });
 
 var balGameTypeEasy = true;
-$(function(){  					//Baloon Game start- Easy
-	$('#startBallGame').click(function(){
+var bGameCurrentLevel;
+function baloonGameSelect(type){
+	//$('#pg4HeaderBarLeftBtn').css('display','none');
+	if(type == 'Easy'){
+		$('#pg4HeaderBarRightBtn').css('display', 'block'); //Back button
+		$('#startBallGameHard').css('visibility', 'hidden'); //Hide Hard Button
+		$('#colorRotate_burstBaloonCont').css('display', 'none'); //Hide
+		$('#gameTwoLevelGenCont').css('display', 'block'); //Levels container
+		balGameTypeEasy = true;
+	}
+
+	if(type == 'Hard'){
+		$('#pg4HeaderBarRightBtn').css('display', 'block'); //Back button
+		$('#startBallGame').css('visibility', 'hidden'); //Hide Easy Button
+		$('#colorRotate_burstBaloonCont').css('display', 'none'); //Hide 
+		$('#gameTwoLevelGenCont').css('display', 'block'); //Levels container
+		balGameTypeEasy = false;
+	}
+}
+function bGameLevelSelect(){
+	if(balGameTypeEasy == true){
+		$('#gameTwoLevelGenCont').css('display', 'none'); //Levels container
+		$('#pg4HeaderBarRightBtn').css('display', 'none'); //Back button
+		bGameCurrentLevel = 1;
+		bGameEasyStart();
+	}
+	if(balGameTypeEasy == false){
+		$('#gameTwoLevelGenCont').css('display', 'none'); //Levels container
+		$('#pg4HeaderBarRightBtn').css('display', 'none'); //Back button
+		bGameCurrentLevel = 1;
+		bGameHardStart();
+	}
+}
+
+function  bGameEasyStart(){  					//Baloon Game start- Easy
+	//$('#startBallGame1').text();
 		$('#pg4HeaderBarLeftBtn').css('display','none');
 		$('#startBallGameCont').css('display', 'none');
 		$('#colorRotate_burstBaloonCont').css('display', 'none'); 
@@ -545,15 +612,17 @@ $(function(){  					//Baloon Game start- Easy
 		$('#bGameBtnCont').css('display', 'block');
 		$('#burstColorCont').css('display', 'flex');
 		$('#burstColorCont').css('display', 'flex');
+		$('#gameTwoLevelCount').text(1); //Start with Level1
+		$('#bGamenextLevel').text(2); //Next Level is 2
 
 		$('#gameTwoScoreCount').text('0');
 		$('#gameTwoLifeCount').text('0');
 		balGameTypeEasy = true;
+		responsiveBallonListSize();
 		startBaloonGame();
-	});
-});
-$(function(){  					//Baloon Game start- Hard
-	$('#startBallGameHard').click(function(){
+}
+
+function  bGameHardStart(){  				//Baloon Game start- Hard
 		$('#pg4HeaderBarLeftBtn').css('display','none');
 		$('#startBallGameCont').css('display', 'none');
 		$('#colorRotate_burstBaloonCont').css('display', 'none'); 
@@ -561,13 +630,84 @@ $(function(){  					//Baloon Game start- Hard
 		$('#bGameBtnCont').css('display', 'block');
 		$('#burstColorCont').css('display', 'flex');
 		$('#burstColorCont').css('display', 'flex');
+		$('#gameTwoLevelCount').text(1); //Start with Level1
+		$('#bGamenextLevel').text(2); //Next Level is 2
 
 		$('#gameTwoScoreCount').text('0');
 		$('#gameTwoLifeCount').text('0');
 		balGameTypeEasy = false;
+		responsiveBallonListSize();
 		startBaloonGame();
-	});
-});
+}
+
+function bGameNextLevelSelect(level){	//Change Level from Level Completed Display
+	if(level == 1){
+			$('#gameTwoLevelCount').text(1);
+			generateNewBalInterval = 4000;
+			changeBGameLevel();
+			//$('#gameTwoNextLevel2').attr('class', 'ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-bottom');
+	}
+	if(level == 2 && CompletedL1 == true){
+		$('#gameTwoLevelCount').text(2);
+		generateNewBalInterval = 3000;  //3000
+		changeBGameLevel();
+	}
+	if(level == 3 && CompletedL2 == true){
+		$('#gameTwoLevelCount').text(3);
+		generateNewBalInterval = 1500;  //1500
+		changeBGameLevel();
+	}
+	if(level == 4 && CompletedL3 == true){
+		$('#gameTwoLevelCount').text(4);
+		generateNewBalInterval = 700;  //700
+		changeBGameLevel();
+	}
+	if(level == 5 && CompletedL4 == true){
+		$('#gameTwoLevelCount').text(5);
+		generateNewBalInterval = 500;  //500
+		changeBGameLevel();
+	}
+
+}
+
+function changeBGameLevel(){				//Change Game Level
+ 	resetBaloonGame(); 	//Reset list, gameTimer
+	$('#gameTwoScoreCount').text('0');
+	$('#gameTwoLifeCount').text('0');
+	playbBgroundSound(false);
+	startBaloonGame();
+}
+
+function bGameNextLevelSet(){   //Function to be called from BalExhaustedCheck Function
+	var openClass = 'ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-bottom';
+	var openClassFull = 'ui-btn ui-btn-inline ui-icon-check ui-btn-icon-bottom';
+	
+	if(CompletedL1 == true){$('#gameTwoNextLevel2').attr('class', openClass);
+		//$('#gameTwoNextLevel2').css('background-color', 'cyan');
+		$('#gameTwoNextLevel1').attr('class', openClassFull);
+		$('#gameTwoNextLevel1').css('background-color', 'lime');
+	}
+	if(CompletedL2 == true){$('#gameTwoNextLevel3').attr('class', openClass);
+		//$('#gameTwoNextLevel3').css('background-color', 'cyan');
+		$('#gameTwoNextLevel2').attr('class', openClassFull);
+		$('#gameTwoNextLevel2').css('background-color', 'lime');
+	}
+	if(CompletedL3 == true){$('#gameTwoNextLevel4').attr('class', openClass);
+		//$('#gameTwoNextLevel4').css('background-color', 'cyan');
+		$('#gameTwoNextLevel3').attr('class', openClassFull);
+		$('#gameTwoNextLevel3').css('background-color', 'lime');
+	}
+	if(CompletedL4 == true){$('#gameTwoNextLevel5').attr('class', openClass);
+		//$('#gameTwoNextLevel5').css('background-color', 'cyan');
+		$('#gameTwoNextLevel4').attr('class', openClassFull);
+		$('#gameTwoNextLevel4').css('background-color', 'lime');
+	}
+	if(CompletedL5 == true){
+		$('#gameTwoNextLevel5').attr('class', openClassFull);
+		$('#gameTwoNextLevel5').css('background-color', 'lime');
+	}
+}
+
 function changeBalPosition(){ //Change position whenever the ball has reached up
 	baloonsList = ['aqua', 'gold', 'skyblue', 'magenta', 'maroon', 'crimson', 'pink', 'violet', 'indigo', 'blue', 
 			'white', 'black', 'gray', 'chocolate', 'teal', 'green', 'red', 'yellow', 'purple', 'lime', 'coral', 
@@ -609,18 +749,33 @@ function ballsExhaustedStatus(){   //Check Game Status
 	}
 	if(checkList.includes('none')){ //ie, all baloons NOT in display
 		if(viewListLen == 0){ //If True, YOU WON;
-			resetBaloonGame();	
-			$('#bGameOverCall').text('Good Job! You Won!'); 
+			
+			resetBaloonGame();
+			var presentLevel = parseInt($('#gameTwoLevelCount').text());	
+			$('#bGameOverCall').text('Good Job!');
+			if(presentLevel < 5){
+				$('#bGameOverCall2').text('Level '+presentLevel+' Completed');				
+			}else{
+				$('#bGameOverCall').text('Waooooo! Good Job');
+				$('#bGameOverCall2').text('All Levels Completed');
+			} 
 			$('#balBusrtCountNo').text($('#gameTwoLifeCount').text());
 			$('#balBusrtCountTime').text(min+'m '+sec+'s');
+			//$('#bGameOver').css('visibility', 'visible');
 			$('#bGameOverContPry').css('display', 'block');	
 			$('#burstColorCont').css('display', 'none');
 			playbBgroundSound(false);
 			playbGameWonSound(true);
 			clearBGameBallUpdate();
+			
+			if(presentLevel == 1){CompletedL1 = true; bGameNextLevelSet()}
+			if(presentLevel == 2){CompletedL2 = true; bGameNextLevelSet()}
+			if(presentLevel == 3){CompletedL3 = true; bGameNextLevelSet()}
+			if(presentLevel == 4){CompletedL4 = true; bGameNextLevelSet()}
+			if(presentLevel == 5){CompletedL5 = true; bGameNextLevelSet()}
 		}
 	}else{
-		setTimeout(gameOver_Baloon, 500);
+		setTimeout(gameOver_Baloon, 300);
 	}
 }
 
@@ -660,6 +815,7 @@ function gameOver_Baloon(){ 		//GAME OVER !!
 	if(viewList.length > 29 ){
 		//$('#bGameOver').text('GAME OVER!!!');
 		$('#bGameOverCall').text('GAME OVER!!!');
+		$('#bGameOverCall2').text('');
 		$('#balBusrtCountNo').text($('#gameTwoLifeCount').text());
 		$('#balBusrtCountTime').text(min+'m '+sec+'s');
 		$('#bGameOverContPry').css('display', 'block');  
@@ -671,22 +827,50 @@ function gameOver_Baloon(){ 		//GAME OVER !!
 	}
 }
 
-$(function(){  					//Restart Baloon Game
-	$('#pulseBGameBtn').click(function(){
+function  restartGameCall(){  					
+	//$('#pulseBGameBtn1').click(function(){
 	resetBaloonGame();
 	$('#bGameBtn').css('background-color','dodgerblue');
 	$('#bGameBtn').css('transform', 'rotate(0deg)');
 	$("#exitCont").fadeOut(700);
-	//stopGameTimer();
-	//$('#gameTwoScore').text('0');
-	//sec = 0; min = 0;
-	$('#gameTwoScoreCount').text('0');
-	$('#gameTwoLifeCount').text('0');
-	//resetBaloonGame();
+	$('#gameTwoScoreCount').text('0');  //Sec count
+	$('#gameTwoLifeCount').text('0'); //Bursted count
 	playbBgroundSound(false);
-	startBaloonGame();
+	playbGameWonSound(false);
+	bGameOverSound.currentTime = 0;
+	/*startBaloonGame();*/
+	$('#gameTwoScore').text('0'); //mins count
+}
+$(function(){  					//Reset Baloon Game Button- Restart Game
+	$('#pulseBGameBtn').click(function(){
+	
+	CompletedL1 = false; CompletedL2 = false; CompletedL3 = false;
+	CompletedL4 = false; CompletedL5 = false;
+	var openClass = 'ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom';
+	var openClass2 = 'ui-btn ui-btn-inline ui-icon-check ui-btn-icon-bottom';
+	$('#gameTwoNextLevel1').attr('class', openClass2);
+	$('#gameTwoNextLevel1').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel2').attr('class', openClass);
+	$('#gameTwoNextLevel2').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel3').attr('class', openClass);
+	$('#gameTwoNextLevel3').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel4').attr('class', openClass);
+	$('#gameTwoNextLevel4').css('background-color', 'lightgray');
+	$('#gameTwoNextLevel5').attr('class', openClass);
+	$('#gameTwoNextLevel5').css('background-color', 'lightgray');
+	
+	$('#bGameOverContPry').css('display', 'block');	
+	$('#bGameOver').css('visibility', 'visible');
+	
+
+	$('#gameTwoLevelCount').text(1);  //Level count
+	$('#gameTwoLevelGenCont').css('display', 'block'); //Levels container
+	
+	restartGameCall();
 	});
 });
+
+
 /*-------Start Baloon Game ------------*/
 var gameDeviceWidth= screen.width;   //To set ball size
 
@@ -696,10 +880,46 @@ var scaleList1 = [1, 3, 1.5, 2, 3, 2.5, 4, 1, 4.5, 3.5];
 var scaleListExtraBig = [1, 6, 1.5, 2, 3, 2.5, 8, 4, 7, 1, 4.5, 5, 7, 5.5, 3.5, 8];
 var scaleListBig = [1, 6, 1.5, 2, 3, 2.5, 5, 4, 7, 1, 4.5, 5, 7, 5.5, 3.5];
 var scaleListSmall = [1, 3, 1.5, 2, 3, 2.5, 5, 4, 1, 4.5, 5, 3.5];
-var scaleList2 = [];
-if(gameDeviceWidth <= 350){scaleList2 = scaleListSmall}
-else if(gameDeviceWidth > 350 && gameDeviceWidth <= 500 ){scaleList2 = scaleListBig}
-else if(gameDeviceWidth > 500 ){scaleList2 = scaleListExtraBig};
+var scaleListSelected = [];
+/*if(gameDeviceWidth <= 350){scaleListSelected = scaleListSmall}
+else if(gameDeviceWidth > 350 && gameDeviceWidth <= 500 ){scaleListSelected = scaleListBig}
+else if(gameDeviceWidth > 500 ){scaleListSelected = scaleListExtraBig};*/
+
+/* -------- Responsive Page Definition ---------- */
+function responsiveBallonListSize(){
+	smallBaloonList(a);
+	bigBaloonList(b);
+	extraBigBaloonList(c);
+}
+
+function smallBaloonList(a){
+	if (a.matches){
+		scaleListSelected = scaleListSmall;
+	}
+}
+var a = window.matchMedia("(max-width: 350px)") //For small devices. Phones 350px and down
+smallBaloonList(a);
+a.addListener(smallBaloonList);
+
+function bigBaloonList(b){
+	if (b.matches){
+		scaleListSelected = scaleListBig;
+	}
+}
+var b = window.matchMedia("(min-width: 350px)") //For medium devices. Phones 350px and up
+bigBaloonList(b);
+b.addListener(bigBaloonList);
+
+function extraBigBaloonList(c){
+	if (c.matches){
+		scaleListSelected = scaleListExtraBig;
+	}
+}
+var c = window.matchMedia("(min-width: 500px)") //For large devices. Phones 500px and up
+extraBigBaloonList(c);
+c.addListener(extraBigBaloonList);
+/* -------- /Responsive Page Definition ---------- */
+
 function startBaloonGame(){
 	var baloonsList = ['aqua', 'gold', 'skyblue', 'magenta', 'maroon', 'crimson', 'pink', 'violet', 'indigo', 'blue', 
 				'white', 'black', 'gray', 'chocolate', 'teal', 'green', 'red', 'yellow', 'purple', 'lime', 'coral', 
@@ -735,6 +955,7 @@ function startBaloonGame(){
 		var scaleSize = randomListColorsFunction(scaleList1);
 		$('#'+addBalls).css('transform', 'scale('+scaleSize+')'); //Resize Ball
 		$('#'+addBalls).css('left', pos+'vw'); //Change position
+
 		//$('#'+addBalls).css('color', addBalls); //Set tail color to baloon color
 		$('#'+addBalls).css('display', 'block');		//Display the baloon
 		hiddenList.splice(hiddenList.indexOf(addBalls), 1);		//Delete the ball from hiddenCol List
@@ -795,7 +1016,7 @@ function selBall(ballID){
 }
 
 $(function(){ //Change Next display ball
-	$('#burstColorCont').click(function(){
+	$('#burstColor').click(function(){
 	if(balGameTypeEasy){
 		var nextRandColor = randomListColorsFunction(viewList);
 		$('#burstColorSp').text(nextRandColor);
@@ -821,12 +1042,11 @@ function playbScratchSound(){bScratchSound.play();bScratchSound.loop = false;}
 function playbGameOverSound(){bGameOverSound.play();bGameOverSound.loop = false;}
 
 var baloonUpdateInterval;
-var generateNewBalInterval = 2000;
 function clearBGameBallUpdate(){
 	clearInterval(baloonUpdateInterval)} //Stop the update
 
 function setBalGameBallInterval(){	//Start update
-	baloonUpdateInterval = setInterval(releaseNewBal, 2000);
+	baloonUpdateInterval = setInterval(releaseNewBal, generateNewBalInterval);
 }
 
 function releaseNewBal(){
@@ -835,10 +1055,12 @@ function releaseNewBal(){
 		var newBallToAdd = randomListColorsFunction(hiddenList); //Select a new ball
 		hiddenList.splice(hiddenList.indexOf(newBallToAdd), 1); //Delete the ball from hiddenCol List
 		//var scaleSize = randomNumbers(1, 7);
-		var scaleSize = randomListColorsFunction(scaleList2);
+		var scaleSize = randomListColorsFunction(scaleListSelected);
 		var pos = randomNumbers(0, 92);
+		//var ballSpeed = randomListColorsFunction(animatSpeedList);
 		$('#'+newBallToAdd).css('transform', 'scale('+scaleSize+')'); //Resize Ball
 		$('#'+newBallToAdd).css('left', pos+'vw'); //Change position
+		//$('#'+newBallToAdd).css('animation-duration', ballSpeed+'s'); //Animate
 		//$('#'+newBallToAdd).css('color', newBallToAdd); //Set tail color to baloon color
 		viewList.push(newBallToAdd); //Add it to viewList List
 		$('#'+newBallToAdd).css('display', 'block'); //Change display to block
@@ -860,6 +1082,11 @@ function stopAllGames(){						//STOP ALL GAMES WHILE AT HOME
 }
 
 /*------ Testing Game ------*/
+$(function(){  				
+	$('#gameTwoNextLevel2-42').click(function(){
+	$('#gameTwoNextLevel2').attr('class', 'ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-bottom');
+	});
+});
 
 //$(function(){  				
 //	$('#gameTwoScoreBoard').click(function(){

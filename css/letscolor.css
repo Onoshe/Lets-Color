@@ -367,61 +367,49 @@ font-weight: bolder;
  animation: rotate-left 10s linear infinite;
 }
 
-@media only screen and (max-width: 800px){
-    /*#colorRotate {transform: scale(1, 1);}
-    #colorRotate_burstBaloon{transform: scale(1, 1);}*/
-}
-@media only screen and (max-width: 430px){
-    #mainHome > div > span{         /*--- ColorScroll ----*/
-    width: 20px; font-size: 14px;
-    height: 20px;
-    border-radius:10px;}
-}
-@media only screen and (max-width: 400px){
-    /*#colorScroll{transform: scale(0.7, 0.7);}
-    #colorRotate {transform: scale(0.8, 0.8);}
-    #colorRotate_burstBaloon{transform: scale(0.8, 0.8);}*/
-    #gameTwoScoreBoard{transform: scale(0.8, 0.8);}
-    #bGameOver{transform: scale(0.8, 0.8);}
-    #pg2HeaderBarDiv > span{font-size: 14px;}
-    #bGameBtnCont{transform: scale(0.7, 0.7);}
-
-    #mainHome > div > span{      /*--- ColorScroll ----*/
-    width: 20px; font-size: 13px;
-    height: 20px;
-    border-radius:10px;
-    padding: 7px;  }
-}
-@media only screen and (max-width: 370px){
-  #gameOneScore{font-size: 14px;}
-   #gameOneScoreSp{font-size: 14px;}
-   #gameOneEasy, #gameOneHard {font-size: 13px; padding: 7px; padding-left: 5px; padding-right: 5px;}
-   /*#colorRotate {transform: scale(0.6, 0.6);}
-  #colorRotate_burstBaloon{transform: scale(0.6, 0.6);}*/
-}
-
 /* ----------Page 3 --------------*/
 #mainPg3 {border: 2px solid grey; background-color: coral; margin: 10px;
 }
 
 
 /* ----------Page 4 --------------*/
-#pg4HeaderBarLeftBtn {background-color: dodgerblue; font-size: 20px;}
+#pg4HeaderBarLeftBtn, #pg4HeaderBarRightBtn {background-color: dodgerblue; font-size: 20px;}
 #mainPg4 {background:linear-gradient(lightgrey, white); height: 500px;}
-#gameTwoScoreBoard{color: black; border: 2px solid grey; border-radius: 5px; font-weight: bolder; font-size: 18px;
+#gameTwoScoreBoard{color: black; border: 2px solid grey; border-radius: 5px; font-weight: bolder; font-size: 14px;
     display: inline-block; float:right; width:auto; background-color: white; text-align: left; padding: 5px;}
-#gameTwoScoreCont{text-align: left; font-size: 16px; }
+#gameTwoScoreCont{text-align: left; font-size: 14px;}
 #gameTwoScoreCount{padding-left: 5px; color: red;}
-#gameTwoLifeCount{color: red; font-family: arial; padding-left: 5px;}
+#gameTwoLifeCount, #gameTwoLevelCount{color: red; font-family: arial; padding-left: 5px;}
 #gameTwoScore{color: red;}
 
 #burstColorCont{margin-top: 0; margin-bottom: 0; 
     display: flex; justify-content: center; align-items: center;}
 #burstColor{margin-top: 0; width: auto;}
-#bGameOverCont{text-align: center; height: 100px;}
-#balBusrtCountCont{font-size: 20px; text-shadow: none; color: black;}
+#bGameOverCont{text-align: center; height: 50px;}
+#balBusrtCountCont{font-size: 20px; text-shadow: none; color: black; margin-top: 1px;}
 #balBusrtCountNo{color: red;}
 #balBusrtCountTime{color: red;}
+
+/*---- Level Select after You Won- Former -------*/
+#bGamenextLevelBtnCont11{align-items: center; display: flex; justify-content: center;}
+#bGamenextLevelBtn{width: auto; font-size: 14px; padding-left: 10px; padding-right: 10px;
+ margin-top: 10px; text-align: center; background-color: cyan; width: 100px; border: 2px solid white; padding: 5px;
+border-radius: 7px; color: black; font-weight: bolder;}
+#bGamenextLevelBtn > span{color: red}
+
+/*---- Level Select after Easy/Hard -------*/
+#gameTwoLevelGenSubCont{align-items: center; display: flex; justify-content: center;}
+#gameTwoLevelGenL1, #gameTwoLevelGenL2, #gameTwoLevelGenL3, #gameTwoLevelGenL4, #gameTwoLevelGenL5 {width: 100%; font-size: 14px; margin-top: 10px; text-align: center; background-color: lightgray;
+     border: 2px solid white; padding: 5px; border-radius: 7px; color: black; font-weight: bolder; height: 40px;}
+/*#gameTwoLevelGenL1 {background-color: cyan;}*/
+
+/*---- Level Select after You Won -------*/
+#bGamenextLevelBtnCont{align-items: center; display: flex; justify-content: center;}
+#gameTwoNextLevel1, #gameTwoNextLevel2, #gameTwoNextLevel3, #gameTwoNextLevel4, #gameTwoNextLevel5 {width: 100%; font-size: 14px; margin-top: 10px; text-align: center; background-color: lightgray;
+     border: 2px solid white; padding: 5px; border-radius: 7px; color: black; font-weight: bolder; height: 40px;}
+/*#gameTwoNextLevel1 {background-color: cyan;}*/
+#gameTwoNextLevel1, #gameTwoNextLevel2, #gameTwoNextLevel3, #gameTwoNextLevel4{margin-right: 2px;}
+#bGamenextLevelBtnCont > .ui-icon-lock {}
 
 #bGameBtnCont{position: fixed; bottom: 0; right: 0; width: 100px;}
 #pulseBGameBtn{width: 100%; padding: 5px; background-color: rgba(0,250,0,0.5); text-align: center; font-size: 18px; border-radius: 15px; margin-top: 10px;}
@@ -437,7 +425,7 @@ font-weight: bolder;
 #bGameOver{
     font-size: 35px; font-weight: bolder; color: red; width: 100%;
     text-shadow: 3px 3px grey; font-family: cursive;
-    animation: dim 0.5s infinite alternate;
+    animation: dim 0.5s infinite alternate; text-align: center; margin-top: 5px;
 }
 @keyframes dim{
     0%{
@@ -475,7 +463,12 @@ font-weight: bolder;
     width:60px;
     border-radius: 30px;
     font-size:20px;
-    /*box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);*/
+
+    /*animation-name: animBalls;
+    animation-duration: 3s;
+    animation-direction: linear;
+    animation-iteration-count:  infinite;
+    box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);*/
 }
 /*
 .baloons:before {
@@ -507,62 +500,62 @@ font-weight: bolder;
 #skyblue{
     background-color: skyblue; /*purple*/
     //left:36vw;
-    animation:animBalls 4.5s linear infinite;
+    animation:animBalls 4.2s linear infinite;
     /*transform:scale(3);*/
     transform:scale(1);
 }
 #magenta{
     background-color: magenta; /*lime*/
     //left:70vw;
-    animation:animBalls 2s linear infinite;
+    animation:animBalls 2.1s linear infinite;
     /*transform:scale(1);*/
     transform:scale(1);
 }#maroon{
     background-color: maroon;  /*coral*/
     //left:76vw;
     color: coral;
-    animation:animBalls 10s linear infinite;
+    animation:animBalls 8s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
 #crimson{
     background-color: crimson; /*aqua*/
     //left:85vw;
-    animation:animBalls 5s linear infinite;
+    animation:animBalls 5.15s linear infinite;
     /*transform:scale(2.5);*/
     transform:scale(1);
 }
 #pink{
     background-color: pink; /*gold*/
     //left:90vw;
-    animation:animBalls 3.5s linear infinite;
+    animation:animBalls 3.3s linear infinite;
     /*transform:scale(1.4);*/
     transform:scale(1);
 }
 #violet{
     background-color: violet; /*dodgerblue*/
     //left:45vw;
-    animation:animBalls 4s linear infinite;
+    animation:animBalls 4.4s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
 #indigo{
     background-color: indigo; /*dodgerblue*/
    // left:20vw;
-    animation:animBalls 5s linear infinite;
+    animation:animBalls 5.7s linear infinite;
     transform:scale(1);
 }
 #blue{
     background-color: blue; /*dodgerblue*/
     //left:6vw;
-    animation:animBalls 2.5s linear infinite;
+    animation:animBalls 2.3s linear infinite;
     /*transform:scale(3);*/
     transform:scale(1);
 }
 #white{
     background-color: white; /*red*/
     //left:10vw;
-    animation:animBalls 2.5s linear infinite;
+    animation:animBalls 10s linear infinite;
     /*transform:scale(0.8);*/
     transform:scale(1);
 }
@@ -570,21 +563,21 @@ font-weight: bolder;
     background-color: black; /*yellow*/
     //left:90vw;
     color: coral;
-    animation:animBalls 6s linear infinite;
+    animation:animBalls 5.6s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
 #gray{
     background-color: gray; /*purple*/
     //left:90vw;
-    animation:animBalls 5s linear infinite;
+    animation:animBalls 5.3s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
 #chocolate{
     background-color: chocolate; /*lime*/
     //left:70vw;
-    animation:animBalls 6s linear infinite;
+    animation:animBalls 5.8s linear infinite;
     /*transform:scale(1);*/
     transform:scale(1);
 }
@@ -592,41 +585,41 @@ font-weight: bolder;
     background-color: teal;  /*coral*/
     //left:76vw;
     color: coral;
-    animation:animBalls 8s linear infinite;
+    animation:animBalls 7s linear infinite;
     /*transform:scale(3);*/
     transform:scale(1);
 }
 #green{
     background-color: green; /*aqua*/
     //left:52vw;
-    animation:animBalls 10s linear infinite;
+    animation:animBalls 8.5s linear infinite;
     /*transform:scale(5);*/
     transform:scale(1);
 }
 #red{
     background-color: red; /*gold*/
     //left:90vw;
-    animation:animBalls 1s linear infinite;
+    animation:animBalls 0.9s linear infinite;
     /*transform:scale(2.5);*/
     transform:scale(1);
 }
 #yellow{
     background-color: yellow; /*dodgerblue*/
     //left:40vw;
-    animation:animBalls 2s linear infinite;
+    animation:animBalls 1.8s linear infinite;
     /*transform:scale(4);*/
     transform:scale(1);
 }
 #purple{
     background-color: purple; /*dodgerblue*/
     //left:20vw;
-    animation:animBalls 6s linear infinite;
+    animation:animBalls 6.5s linear infinite;
     transform:scale(1);
 }
 #lime{
     background-color: lime; /*dodgerblue*/
     //left:16vw;
-    animation:animBalls 2.5s linear infinite;
+    animation:animBalls 9s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
@@ -661,7 +654,7 @@ font-weight: bolder;
 #seagreen{
     background-color: seagreen; /*dodgerblue*/
     //left:35vw;
-    animation:animBalls 1.8s linear infinite;
+    animation:animBalls 1.5s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
@@ -675,28 +668,28 @@ font-weight: bolder;
 #wheat{
     background-color: wheat; /*dodgerblue*/
     //left:55vw;
-    animation:animBalls 2s linear infinite;
+    animation:animBalls 3.7s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
 #linen{
     background-color: linen; /*dodgerblue*/
     //left:80vw;
-    animation:animBalls 2.5s linear infinite;
+    animation:animBalls 2.7s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
 #turquoise{
     background-color: turquoise; /*dodgerblue*/
    // left:45vw;
-    animation:animBalls 1.8s linear infinite;
+    animation:animBalls 1.7s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
 #sienna{
     background-color: sienna; /*dodgerblue*/
     //left:68vw;
-    animation:animBalls 4s linear infinite;
+    animation:animBalls 4.5s linear infinite;
     /*transform:scale(2);*/
     transform:scale(1);
 }
@@ -706,7 +699,7 @@ font-weight: bolder;
         top:-20px; 
     }
     100%{
-        top:100vh;
+        top:110vh;
     }
 }
 
@@ -914,6 +907,44 @@ font-weight: bolder;
 
 #page3TestDisplay{color: black; border: 3px solid grey; background-color: white;}
 
+
+@media only screen and (max-width: 800px){
+    /*#colorRotate {transform: scale(1, 1);}
+    #colorRotate_burstBaloon{transform: scale(1, 1);}*/
+}
+@media only screen and (max-width: 430px){
+    #mainHome > div > span{         /*--- ColorScroll ----*/
+    width: 20px; font-size: 14px;
+    height: 20px;
+    border-radius:10px;}
+}
+@media only screen and (max-width: 400px){
+    /*#colorScroll{transform: scale(0.7, 0.7);}
+    #colorRotate {transform: scale(0.8, 0.8);}
+    #colorRotate_burstBaloon{transform: scale(0.8, 0.8);}
+    #bGameOverCont{transform: scale(0.8, 0.8);}*/
+    #bGameOverCall, #bGameOverCall2{font-size: 25px;}
+    #balBusrtCountCont{font-size: 15px;}
+    #gameTwoScoreBoard{transform: scale(0.8, 0.8);}
+    #pg2HeaderBarDiv > span{font-size: 14px;}
+    #bGameBtnCont{transform: scale(0.7, 0.7);}
+
+    #mainHome > div > span{      /*--- ColorScroll ----*/
+    width: 20px; font-size: 13px;
+    height: 20px;
+    border-radius:10px;
+    padding: 7px;  }
+}
+@media only screen and (max-width: 370px){
+  #gameOneScore{font-size: 14px;}
+   #gameOneScoreSp{font-size: 14px;}
+   #gameOneEasy, #gameOneHard {font-size: 13px; padding: 7px; padding-left: 5px; padding-right: 5px;}
+   /*#gameTwoLevelGenL1, #gameTwoLevelGenL2, #gameTwoLevelGenL3 {text-align: left;}*/
+   #gameTwoLevelGenL1, #gameTwoLevelGenL2, #gameTwoLevelGenL3, #gameTwoLevelGenL4, #gameTwoLevelGenL5 {font-size: 11px; height: 35px;}
+   #gameTwoNextLevel1, #gameTwoNextLevel2, #gameTwoNextLevel3, #gameTwoNextLevel4, #gameTwoNextLevel5{font-size: 11px; height: 35px;}
+   /*#colorRotate {transform: scale(0.6, 0.6);}
+  #colorRotate_burstBaloon{transform: scale(0.6, 0.6);}*/
+}
 
 /* ----- Page3 Color Mix -----*/
 /*canvas {

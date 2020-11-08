@@ -3,14 +3,14 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "io.imfastLetsColor.sundayadegboye"
     versionCode = "10"
-    version     = "1.0.5" >
+    version     = "1.0.6" >
 
 <!-- versionCode is optional and Android only -->
 
   <name>Let's Color</name>
 
   <description>
-      Let's Color is a simple game to learn and familiarize with colors.
+      Let's Color is a simple game to learn and familiarize with color names.
   </description>
 
   <author href="https://asundayadegboye.imfast.io/" email="sunadesung2005@gmail.co.uk">

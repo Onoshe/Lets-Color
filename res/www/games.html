@@ -23,6 +23,7 @@
 	<div data-role="header" data-position="fixed" id="pg2HeaderBar">
 		<div id="pg2HeaderBarDiv"><span>L</span><span>E</span><span>T'</span><span>S</span><span> P</span><span>L</span><span>A</span><span>Y </span><span> C</span><span>O</span><span>L</span><span>O</span><span>R</span><span>S</span></div>
 		<a href="../../index.html" rel="external" data-prefetch class="ui-btn ui-icon-home ui-btn-icon-notext" id="pg4HeaderBarLeftBtn" data-direction="reverse" data-rel="back" data-dom-cache="true">home</a>
+		<a href="#" class="ui-btn ui-icon-back ui-btn-icon-notext" id="pg4HeaderBarRightBtn" style="display: none;">back</a>
 		<!--<a href="#" class="ui-btn ui-btn-inline ui-btn-icon-right" id="pg4HeaderBarRightBtn">&#9193;</a>--> 
 	</div><!-- /header -->
 	<!--<div id="displayTest1" style="background-color: blue; font-size: 16px; font-weight: bolder; color: white;">BallSize</div>-->
@@ -64,10 +65,27 @@
 	</div>
 	
 	<div id="startBallGameCont">
-		<button id="startBallGame" style="display: block;">Start Game- Easy</button>
-		<button id="startBallGameHard" style="display: block;">Start Game- Hard</button>
+		<button id="startBallGame" style="display: block;" onclick="baloonGameSelect('Easy')">Start Game- Easy</button>
+		<button id="startBallGameHard" style="display: block;" onclick="baloonGameSelect('Hard')">Start Game- Hard</button>
 	</div>
-	<button id="gameTwoScoreBoard" style="display: none;"><div id="gameTwoLife">Count: <span id="gameTwoLifeCount">0</span></div><div id="gameTwoScoreCont"><span>Timer: </span><span id="gameTwoScore">min</span><span id="gameTwoScoreCount">sec</span></div></button><br>
+	<!--<div id="gameTwoLevelGenCont" style="display: none;">
+		<div id="gameTwoLevelGenSubCont">
+			<div class="ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-right" id="gameTwoLevelGenL1" onclick="bGameLevelSelect()">Level 1 </div>
+			<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-right" id="gameTwoLevelGenL2" >Level 2 </div>
+			<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-right" id="gameTwoLevelGenL3" >Level 3 </div>
+		</div>
+	</div>-->
+	<div id="gameTwoLevelGenCont" style="display: none;">
+		<div id="gameTwoLevelGenSubCont">
+			<div class="ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-bottom" id="gameTwoLevelGenL1" onclick="bGameLevelSelect()">Level 1 </div>
+			<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoLevelGenL2" >Level 2 </div>
+			<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoLevelGenL3" >Level 3 </div>
+			<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoLevelGenL4" >Level 4 </div>
+			<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoLevelGenL5" >Level 5 </div>
+		</div>
+	</div>
+
+	<button id="gameTwoScoreBoard" style="display: none;"><div id="gameTwoLevel">Level: <span id="gameTwoLevelCount">1</span></div><div id="gameTwoLife">Count: <span id="gameTwoLifeCount">0</span></div><div id="gameTwoScoreCont"><span>Timer: </span><span id="gameTwoScore">min</span><span id="gameTwoScoreCount">sec</span></div></button><br>
 		<div id="colorRotate_burstBaloonCont">
 		<div id="colorRotate_burstBaloon">
 			<div id="colorRotate1">B</div>
@@ -103,12 +121,22 @@
 			<div id="colorRotate15">S</div>
 		</div>
 		</div>
-		<br><br>
-		<div class="w3-display-container" id="bGameOverContPry" style="display: none;">
+		<br><br><br>
+		<div class="w3-display-container" id="bGameOverContPry" style="display: none;"><br>
 			<div id="bGameOverCont">
-				<div id="bGameOver" class="w3-display-bottommiddle">
-					<br><br><div id="bGameOverCall" >GAME OVER!!!</div><hr>
-					<div id="balBusrtCountCont"><span id="balBusrtCountNo"></span><span> Baloons bursted in </span><span id="balBusrtCountTime"></span></div>
+				<div id="bGameOverSubCont" class="w3-display-bottommiddle">
+					<div id="bGameOver">
+						<div id="bGameOverCall">GAME OVER!!!</div><div id="bGameOverCall2"></div><hr>
+						<div id="balBusrtCountCont" class="balBusrtCountCont"><span id="balBusrtCountNo"></span><span> Balloons bursted in </span><span id="balBusrtCountTime"></span></div>
+					</div>
+					<!--<div id="bGamenextLevelBtnCont11"><div id="bGamenextLevelBtn">Next Level: <span id="bGamenextLevel">2</span></div></div>-->
+					<div id="bGamenextLevelBtnCont">
+						<div class="ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-bottom" id="gameTwoNextLevel1" onclick="bGameNextLevelSelect(1)">Level 1 </div>
+						<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoNextLevel2" onclick="bGameNextLevelSelect(2)">Level 2 </div>
+						<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoNextLevel3" onclick="bGameNextLevelSelect(3)">Level 3 </div>
+						<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoNextLevel4" onclick="bGameNextLevelSelect(4)">Level 4 </div>
+						<div class="ui-btn ui-btn-inline ui-icon-lock ui-btn-icon-bottom" id="gameTwoNextLevel5" onclick="bGameNextLevelSelect(5)">Level 5 </div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -123,7 +151,7 @@
 	<!--<p id="testNoRand" style="color: red; font-size: 16px">Number</p>-->
 	<div id="bGameBtnCont" style="display: none;" >
 		<div id="exitCont" style="display: none;">
-			<div id="pulseBGameBtn">Restart</div>
+			<div id="pulseBGameBtn" style="visibility: hidden;">Reset</div>
 			<div id="exitBGameBtn">Exit</div>
 		</div>
 		<div id="bGameBtn">+</div>
